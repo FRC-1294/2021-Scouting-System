@@ -15,11 +15,9 @@ namespace _1294_Scouting
         public Scout()
         {
             InitializeComponent();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            powerCells.Text = "It scored some!";
-        }
+        
     }
 }
