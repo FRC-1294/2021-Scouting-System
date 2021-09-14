@@ -8,20 +8,11 @@
         Scored
     }
 
-    //Color Wheel
-    public enum ColorWheel
-    {
-        No,
-        Spin,
-        Match
-    }
-
     //Climbing
     public enum Climb
     {
         No,
-        Yes,
-        Balance
+        Yes
     }
 
    
@@ -30,18 +21,21 @@
     public class RobotMatchData
     {
         public Auto auto;
-        public ColorWheel wheel;
-        public Climb climb;
+        public bool wheelSpin;
+        public bool wheelMatch;
+        public bool climb;
         public RobotMatchData()
         {
             auto = Auto.None;
-            wheel = ColorWheel.No;
-            climb = Climb.No;
+            wheelSpin = false;
+            wheelMatch = false;
+            climb = false;
         }
         public string toString()
         {
             return $"Autonomous: {auto}\n" +
-                $"Color Wheel: {wheel}\n" +
+                $"Color Wheel Spun: {wheelSpin}\n" +
+                $"Color Wheel Match: {wheelMatch}\n" +
                 $"Climb: {climb}\n";
         }
     }

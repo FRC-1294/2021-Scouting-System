@@ -22,6 +22,7 @@ namespace _1294_Scouting
 
         public void UpdateData(object sender, EventArgs e)
         {
+            //Autonomous
             if(autoNo.Checked)
             {
                 data.auto = Auto.None;
@@ -32,6 +33,19 @@ namespace _1294_Scouting
             {
                 data.auto = Auto.Scored;
             }
+            //Climb
+            if(climbNo.Checked)
+            {
+                data.climb = false;
+            } else if (climbYes.Checked)
+            {
+                data.climb = true;
+            } 
+            //Wheel
+            
+            data.wheelMatch = wheelMatch.Checked;
+            data.wheelSpin = wheelSpin.Checked;
+            
             debugLabel.Text = data.toString();
         }
     }
