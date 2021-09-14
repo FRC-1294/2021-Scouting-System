@@ -17,19 +17,19 @@ namespace _1294_Scouting
 			InitializeComponent();
 		}
 
-		private void label1_Click(object sender, EventArgs e)
+		private void Label1_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void Button1_Click(object sender, EventArgs e)
 		{
 			Scout s = new Scout();
 			s.Show();
 			Hide();
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void Button2_Click(object sender, EventArgs e)
 		{
 			Server s = new Server();
 			s.Show();
