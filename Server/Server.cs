@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
 {
     public partial class Server : Form
     {
-        public Server()
-        {
-            InitializeComponent();
-        }
+        public Server() => InitializeComponent();
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            if(sendArm.Checked)
+            if (sendArm.Checked)
             {
                 sendArm.Checked = false;
                 //TODO Send next match to clients
@@ -28,18 +18,19 @@ namespace _1294_Scouting
 
         private void sendArm_CheckedChanged(object sender, EventArgs e)
         {
-            if(sendArm.Checked)
+            if (sendArm.Checked)
             {
                 sendButton.Enabled = true;
                 sendButton.Text = "SEND NEXT MATCH";
                 sendArm.Text = "ARMED";
-            } else
+            }
+            else
             {
                 sendButton.Enabled = false;
                 sendButton.Text = "disarmed";
                 sendArm.Text = "Check to arm";
             }
-            
+
         }
     }
 }

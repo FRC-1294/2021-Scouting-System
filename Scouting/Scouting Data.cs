@@ -15,7 +15,7 @@
         Yes
     }
 
-   
+
 
     //Class for data per match per robot (Will be processed)
     public class RobotMatchData
@@ -31,13 +31,10 @@
             wheelMatch = false;
             climb = false;
         }
-        public string toString()
-        {
-            return $"Autonomous: {auto}\n" +
+        public string toString() => $"Autonomous: {auto}\n" +
                 $"Color Wheel Spun: {wheelSpin}\n" +
                 $"Color Wheel Match: {wheelMatch}\n" +
                 $"Climb: {climb}\n";
-        }
     }
 
     //Data to send to Mongo
