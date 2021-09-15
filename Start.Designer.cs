@@ -43,7 +43,6 @@ namespace _1294_Scouting
             this.label1.Size = new System.Drawing.Size(420, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to Team 1294 Scouting!";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // button1
             // 

@@ -7,11 +7,6 @@ namespace _1294_Scouting
     {
         public Start() => InitializeComponent();
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             Scout s = new Scout();
