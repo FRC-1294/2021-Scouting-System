@@ -27,6 +27,7 @@ namespace _1294_Scouting
 			Scout s = new Scout();
 			s.Show();
 			Hide();
+			s.FormClosed += new FormClosedEventHandler(Close);
 		}
 
 		private void Button2_Click(object sender, EventArgs e)
@@ -34,7 +35,12 @@ namespace _1294_Scouting
 			Server s = new Server();
 			s.Show();
 			Hide();
-
+            s.FormClosed += new FormClosedEventHandler(Close);
 		}
+
+		private void Close(object sender, EventArgs e)
+        {
+			Close();
+        }
 	}
 }
