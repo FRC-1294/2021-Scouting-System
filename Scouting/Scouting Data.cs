@@ -24,14 +24,20 @@
         public bool wheelSpin;
         public bool wheelMatch;
         public bool climb;
+        public int powerCellsTop;
+        public int powerCellsBottom;
         public RobotMatchData()
         {
             auto = Auto.None;
             wheelSpin = false;
             wheelMatch = false;
             climb = false;
+            powerCellsBottom = 0;
+            powerCellsTop = 0;
         }
         public string toString() => $"Autonomous: {auto}\n" +
+            $"Power Cells Scored (Top): {powerCellsTop}\n" +
+            $"Power Cells Scored (Bottom): {powerCellsBottom}\n" +
                 $"Color Wheel Spun: {wheelSpin}\n" +
                 $"Color Wheel Match: {wheelMatch}\n" +
                 $"Climb: {climb}\n";
