@@ -42,12 +42,18 @@ namespace _1294_Scouting
             data.wheelMatch = wheelMatch.Checked;
             data.wheelSpin = wheelSpin.Checked;
 
+            //Power cells
             powerCellsTop.Text = data.powerCellsTop.ToString();
             powerCellsBottom.Text = data.powerCellsBottom.ToString();
 
+            //Debug output
             debugLabel.Text = data.toString();
         }
 
+        //POWER CELLS
+        #region powerCells
+
+        //Top
         private void powerCellsTop_TextChanged(object sender, EventArgs e)
         {
             if (powerCellsTop.Text != "")
@@ -67,19 +73,13 @@ namespace _1294_Scouting
                     {
                         MessageBox.Show("Invalid number. Please try again");
                     }
-
                 }
-
             }
-
         }
         private void powerCellTopAdd_Click(object sender, EventArgs e)
         {
-
             data.powerCellsTop++;
             UpdateData(sender, e);
-
-
         }
         private void powerCellsTopSubtract_Click(object sender, EventArgs e)
         {
@@ -92,10 +92,9 @@ namespace _1294_Scouting
                 data.powerCellsTop--;
                 UpdateData(sender, e);
             }
-
         }
 
-
+        //Bottom
         private void powerCellsBottom_TextChanged(object sender, EventArgs e)
         {
             if (powerCellsBottom.Text != "")
@@ -115,9 +114,7 @@ namespace _1294_Scouting
                     {
                         MessageBox.Show("Invalid number. Please try again");
                     }
-
                 }
-
             }
         }
         private void powerCellsBottomAdd_Click(object sender, EventArgs e)
@@ -136,7 +133,7 @@ namespace _1294_Scouting
                 data.powerCellsBottom--;
                 UpdateData(sender, e);
             }
-
         }
+        #endregion
     }
 }
