@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgressBar.cs" />
     <Compile Include="Scouting\Scouting Data.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>

@@ -53,8 +53,8 @@ namespace _1294_Scouting
             this.powerCellsGroupBox = new System.Windows.Forms.GroupBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.scoutingControlPanel = new System.Windows.Forms.Panel();
-            this.currentRobot = new System.Windows.Forms.TextBox();
             this.currentRobotLabel = new System.Windows.Forms.Label();
+            this.currentRobot = new System.Windows.Forms.TextBox();
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
@@ -319,6 +319,7 @@ namespace _1294_Scouting
             this.submitButton.TabIndex = 13;
             this.submitButton.Text = "Submit Data";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // scoutingControlPanel
             // 
@@ -334,6 +335,15 @@ namespace _1294_Scouting
             this.scoutingControlPanel.Size = new System.Drawing.Size(766, 342);
             this.scoutingControlPanel.TabIndex = 14;
             // 
+            // currentRobotLabel
+            // 
+            this.currentRobotLabel.AutoSize = true;
+            this.currentRobotLabel.Location = new System.Drawing.Point(557, 49);
+            this.currentRobotLabel.Name = "currentRobotLabel";
+            this.currentRobotLabel.Size = new System.Drawing.Size(76, 13);
+            this.currentRobotLabel.TabIndex = 13;
+            this.currentRobotLabel.Text = "Current Robot:";
+            // 
             // currentRobot
             // 
             this.currentRobot.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -344,15 +354,6 @@ namespace _1294_Scouting
             this.currentRobot.TabIndex = 12;
             this.currentRobot.Text = "1294";
             // 
-            // currentRobotLabel
-            // 
-            this.currentRobotLabel.AutoSize = true;
-            this.currentRobotLabel.Location = new System.Drawing.Point(557, 49);
-            this.currentRobotLabel.Name = "currentRobotLabel";
-            this.currentRobotLabel.Size = new System.Drawing.Size(76, 13);
-            this.currentRobotLabel.TabIndex = 13;
-            this.currentRobotLabel.Text = "Current Robot:";
-            // 
             // statusBar
             // 
             this.statusBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -361,8 +362,8 @@ namespace _1294_Scouting
             this.statusBar.MarqueeAnimationSpeed = 2;
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(766, 28);
-            this.statusBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.statusBar.TabIndex = 15;
+            this.statusBar.Value = 100;
             // 
             // Scout
             // 

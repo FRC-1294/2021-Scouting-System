@@ -7,6 +7,7 @@ namespace _1294_Scouting
     public partial class Scout : Form
     {
         private RobotMatchData data;
+        private int robot;
         public Scout()
         {
             InitializeComponent();
@@ -135,5 +136,35 @@ namespace _1294_Scouting
             }
         }
         #endregion
+
+        //Controls
+        //These are designed to be run when commands are recieved from the server.
+        public void NextRobot(int newRobot)
+        {
+            robot = newRobot;
+            currentRobot.Text = newRobot.ToString();
+
+        }
+
+        public void SubmitData()
+        {
+
+        }
+
+        public void LostConnection()
+        {
+            
+        }
+
+        public void GotConnection()
+        {
+
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            statusBar.Style = ProgressBarStyle.Blocks;            
+            statusBar.SetState(2);
+        }
     }
 }
