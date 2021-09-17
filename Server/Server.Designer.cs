@@ -53,6 +53,12 @@ namespace _1294_Scouting
             this.sendButton = new System.Windows.Forms.Button();
             this.sendArm = new System.Windows.Forms.CheckBox();
             this.nextMatchBox = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.progressBar5 = new System.Windows.Forms.ProgressBar();
+            this.progressBar6 = new System.Windows.Forms.ProgressBar();
             this.teamTable.SuspendLayout();
             this.nextMatchBox.SuspendLayout();
             this.SuspendLayout();
@@ -75,10 +81,13 @@ namespace _1294_Scouting
             // 
             // teamTable
             // 
-            this.teamTable.ColumnCount = 3;
+            this.teamTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.teamTable.ColumnCount = 4;
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.teamTable.Controls.Add(this.r1Label, 0, 0);
             this.teamTable.Controls.Add(this.r1Team, 1, 0);
             this.teamTable.Controls.Add(this.r2Input, 2, 1);
@@ -97,6 +106,12 @@ namespace _1294_Scouting
             this.teamTable.Controls.Add(this.b2Team, 1, 4);
             this.teamTable.Controls.Add(this.b3Team, 1, 5);
             this.teamTable.Controls.Add(this.r1Input, 2, 0);
+            this.teamTable.Controls.Add(this.progressBar1, 3, 0);
+            this.teamTable.Controls.Add(this.progressBar2, 3, 1);
+            this.teamTable.Controls.Add(this.progressBar3, 3, 2);
+            this.teamTable.Controls.Add(this.progressBar4, 3, 3);
+            this.teamTable.Controls.Add(this.progressBar5, 3, 4);
+            this.teamTable.Controls.Add(this.progressBar6, 3, 5);
             this.teamTable.Location = new System.Drawing.Point(6, 19);
             this.teamTable.Name = "teamTable";
             this.teamTable.RowCount = 6;
@@ -106,7 +121,7 @@ namespace _1294_Scouting
             this.teamTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.teamTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.teamTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.teamTable.Size = new System.Drawing.Size(261, 219);
+            this.teamTable.Size = new System.Drawing.Size(401, 224);
             this.teamTable.TabIndex = 3;
             // 
             // r1Label
@@ -129,35 +144,35 @@ namespace _1294_Scouting
             // 
             // r2Input
             // 
-            this.r2Input.Location = new System.Drawing.Point(136, 39);
+            this.r2Input.Location = new System.Drawing.Point(136, 40);
             this.r2Input.Name = "r2Input";
             this.r2Input.Size = new System.Drawing.Size(100, 20);
             this.r2Input.TabIndex = 6;
             // 
             // r3Input
             // 
-            this.r3Input.Location = new System.Drawing.Point(136, 75);
+            this.r3Input.Location = new System.Drawing.Point(136, 77);
             this.r3Input.Name = "r3Input";
             this.r3Input.Size = new System.Drawing.Size(100, 20);
             this.r3Input.TabIndex = 7;
             // 
             // b1Input
             // 
-            this.b1Input.Location = new System.Drawing.Point(136, 111);
+            this.b1Input.Location = new System.Drawing.Point(136, 114);
             this.b1Input.Name = "b1Input";
             this.b1Input.Size = new System.Drawing.Size(100, 20);
             this.b1Input.TabIndex = 8;
             // 
             // b2Input
             // 
-            this.b2Input.Location = new System.Drawing.Point(136, 147);
+            this.b2Input.Location = new System.Drawing.Point(136, 151);
             this.b2Input.Name = "b2Input";
             this.b2Input.Size = new System.Drawing.Size(100, 20);
             this.b2Input.TabIndex = 9;
             // 
             // b3Input
             // 
-            this.b3Input.Location = new System.Drawing.Point(136, 183);
+            this.b3Input.Location = new System.Drawing.Point(136, 188);
             this.b3Input.Name = "b3Input";
             this.b3Input.Size = new System.Drawing.Size(100, 20);
             this.b3Input.TabIndex = 10;
@@ -165,7 +180,7 @@ namespace _1294_Scouting
             // r2Label
             // 
             this.r2Label.AutoSize = true;
-            this.r2Label.Location = new System.Drawing.Point(3, 36);
+            this.r2Label.Location = new System.Drawing.Point(3, 37);
             this.r2Label.Name = "r2Label";
             this.r2Label.Size = new System.Drawing.Size(36, 13);
             this.r2Label.TabIndex = 11;
@@ -174,7 +189,7 @@ namespace _1294_Scouting
             // r3Label
             // 
             this.r3Label.AutoSize = true;
-            this.r3Label.Location = new System.Drawing.Point(3, 72);
+            this.r3Label.Location = new System.Drawing.Point(3, 74);
             this.r3Label.Name = "r3Label";
             this.r3Label.Size = new System.Drawing.Size(36, 13);
             this.r3Label.TabIndex = 12;
@@ -183,7 +198,7 @@ namespace _1294_Scouting
             // b1Label
             // 
             this.b1Label.AutoSize = true;
-            this.b1Label.Location = new System.Drawing.Point(3, 108);
+            this.b1Label.Location = new System.Drawing.Point(3, 111);
             this.b1Label.Name = "b1Label";
             this.b1Label.Size = new System.Drawing.Size(37, 13);
             this.b1Label.TabIndex = 13;
@@ -192,7 +207,7 @@ namespace _1294_Scouting
             // b2Label
             // 
             this.b2Label.AutoSize = true;
-            this.b2Label.Location = new System.Drawing.Point(3, 144);
+            this.b2Label.Location = new System.Drawing.Point(3, 148);
             this.b2Label.Name = "b2Label";
             this.b2Label.Size = new System.Drawing.Size(37, 13);
             this.b2Label.TabIndex = 14;
@@ -201,7 +216,7 @@ namespace _1294_Scouting
             // b3Label
             // 
             this.b3Label.AutoSize = true;
-            this.b3Label.Location = new System.Drawing.Point(3, 180);
+            this.b3Label.Location = new System.Drawing.Point(3, 185);
             this.b3Label.Name = "b3Label";
             this.b3Label.Size = new System.Drawing.Size(37, 13);
             this.b3Label.TabIndex = 15;
@@ -210,7 +225,7 @@ namespace _1294_Scouting
             // r2Team
             // 
             this.r2Team.AutoSize = true;
-            this.r2Team.Location = new System.Drawing.Point(60, 36);
+            this.r2Team.Location = new System.Drawing.Point(60, 37);
             this.r2Team.Name = "r2Team";
             this.r2Team.Size = new System.Drawing.Size(38, 13);
             this.r2Team.TabIndex = 16;
@@ -219,7 +234,7 @@ namespace _1294_Scouting
             // r3Team
             // 
             this.r3Team.AutoSize = true;
-            this.r3Team.Location = new System.Drawing.Point(60, 72);
+            this.r3Team.Location = new System.Drawing.Point(60, 74);
             this.r3Team.Name = "r3Team";
             this.r3Team.Size = new System.Drawing.Size(38, 13);
             this.r3Team.TabIndex = 17;
@@ -228,7 +243,7 @@ namespace _1294_Scouting
             // b1Team
             // 
             this.b1Team.AutoSize = true;
-            this.b1Team.Location = new System.Drawing.Point(60, 108);
+            this.b1Team.Location = new System.Drawing.Point(60, 111);
             this.b1Team.Name = "b1Team";
             this.b1Team.Size = new System.Drawing.Size(38, 13);
             this.b1Team.TabIndex = 18;
@@ -237,7 +252,7 @@ namespace _1294_Scouting
             // b2Team
             // 
             this.b2Team.AutoSize = true;
-            this.b2Team.Location = new System.Drawing.Point(60, 144);
+            this.b2Team.Location = new System.Drawing.Point(60, 148);
             this.b2Team.Name = "b2Team";
             this.b2Team.Size = new System.Drawing.Size(38, 13);
             this.b2Team.TabIndex = 19;
@@ -246,7 +261,7 @@ namespace _1294_Scouting
             // b3Team
             // 
             this.b3Team.AutoSize = true;
-            this.b3Team.Location = new System.Drawing.Point(60, 180);
+            this.b3Team.Location = new System.Drawing.Point(60, 185);
             this.b3Team.Name = "b3Team";
             this.b3Team.Size = new System.Drawing.Size(38, 13);
             this.b3Team.TabIndex = 20;
@@ -288,10 +303,64 @@ namespace _1294_Scouting
             this.nextMatchBox.Controls.Add(this.teamTable);
             this.nextMatchBox.Location = new System.Drawing.Point(12, 12);
             this.nextMatchBox.Name = "nextMatchBox";
-            this.nextMatchBox.Size = new System.Drawing.Size(283, 377);
+            this.nextMatchBox.Size = new System.Drawing.Size(413, 377);
             this.nextMatchBox.TabIndex = 6;
             this.nextMatchBox.TabStop = false;
             this.nextMatchBox.Text = "Next Match";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(264, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(134, 23);
+            this.progressBar1.TabIndex = 21;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar2.Location = new System.Drawing.Point(264, 40);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(134, 23);
+            this.progressBar2.TabIndex = 22;
+            // 
+            // progressBar3
+            // 
+            this.progressBar3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar3.Location = new System.Drawing.Point(264, 77);
+            this.progressBar3.Name = "progressBar3";
+            this.progressBar3.Size = new System.Drawing.Size(134, 23);
+            this.progressBar3.TabIndex = 23;
+            // 
+            // progressBar4
+            // 
+            this.progressBar4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar4.Location = new System.Drawing.Point(264, 114);
+            this.progressBar4.Name = "progressBar4";
+            this.progressBar4.Size = new System.Drawing.Size(134, 23);
+            this.progressBar4.TabIndex = 24;
+            // 
+            // progressBar5
+            // 
+            this.progressBar5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar5.Location = new System.Drawing.Point(264, 151);
+            this.progressBar5.Name = "progressBar5";
+            this.progressBar5.Size = new System.Drawing.Size(134, 23);
+            this.progressBar5.TabIndex = 25;
+            // 
+            // progressBar6
+            // 
+            this.progressBar6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar6.Location = new System.Drawing.Point(264, 188);
+            this.progressBar6.Name = "progressBar6";
+            this.progressBar6.Size = new System.Drawing.Size(134, 23);
+            this.progressBar6.TabIndex = 26;
             // 
             // Server
             // 
@@ -337,5 +406,11 @@ namespace _1294_Scouting
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.CheckBox sendArm;
         private System.Windows.Forms.GroupBox nextMatchBox;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar progressBar5;
+        private System.Windows.Forms.ProgressBar progressBar6;
     }
 }
