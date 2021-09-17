@@ -51,12 +51,18 @@ namespace _1294_Scouting
             this.powerCellsBottomAdd = new System.Windows.Forms.Button();
             this.powerCellsBottomLabel = new System.Windows.Forms.Label();
             this.powerCellsGroupBox = new System.Windows.Forms.GroupBox();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.scoutingControlPanel = new System.Windows.Forms.Panel();
+            this.currentRobot = new System.Windows.Forms.TextBox();
+            this.currentRobotLabel = new System.Windows.Forms.Label();
+            this.statusBar = new System.Windows.Forms.ProgressBar();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
             this.powerCellsTopBox.SuspendLayout();
             this.powerCellsBottomBox.SuspendLayout();
             this.powerCellsGroupBox.SuspendLayout();
+            this.scoutingControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // autoBox
@@ -64,7 +70,7 @@ namespace _1294_Scouting
             this.autoBox.Controls.Add(this.autoScore);
             this.autoBox.Controls.Add(this.autoMove);
             this.autoBox.Controls.Add(this.autoNo);
-            this.autoBox.Location = new System.Drawing.Point(494, 49);
+            this.autoBox.Location = new System.Drawing.Point(305, 15);
             this.autoBox.Name = "autoBox";
             this.autoBox.Size = new System.Drawing.Size(116, 99);
             this.autoBox.TabIndex = 0;
@@ -110,7 +116,7 @@ namespace _1294_Scouting
             // 
             this.climbBox.Controls.Add(this.climbYes);
             this.climbBox.Controls.Add(this.climbNo);
-            this.climbBox.Location = new System.Drawing.Point(494, 179);
+            this.climbBox.Location = new System.Drawing.Point(305, 120);
             this.climbBox.Name = "climbBox";
             this.climbBox.Size = new System.Drawing.Size(116, 73);
             this.climbBox.TabIndex = 1;
@@ -143,8 +149,9 @@ namespace _1294_Scouting
             // 
             // debugLabel
             // 
+            this.debugLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.debugLabel.AutoSize = true;
-            this.debugLabel.Location = new System.Drawing.Point(316, 23);
+            this.debugLabel.Location = new System.Drawing.Point(677, 391);
             this.debugLabel.Name = "debugLabel";
             this.debugLabel.Size = new System.Drawing.Size(48, 13);
             this.debugLabel.TabIndex = 2;
@@ -154,7 +161,7 @@ namespace _1294_Scouting
             // 
             this.colorWheelBox.Controls.Add(this.wheelMatch);
             this.colorWheelBox.Controls.Add(this.wheelSpin);
-            this.colorWheelBox.Location = new System.Drawing.Point(494, 295);
+            this.colorWheelBox.Location = new System.Drawing.Point(305, 199);
             this.colorWheelBox.Name = "colorWheelBox";
             this.colorWheelBox.Size = new System.Drawing.Size(97, 76);
             this.colorWheelBox.TabIndex = 3;
@@ -295,23 +302,78 @@ namespace _1294_Scouting
             // 
             this.powerCellsGroupBox.Controls.Add(this.powerCellsBottomBox);
             this.powerCellsGroupBox.Controls.Add(this.powerCellsTopBox);
-            this.powerCellsGroupBox.Location = new System.Drawing.Point(36, 55);
+            this.powerCellsGroupBox.Location = new System.Drawing.Point(14, 15);
             this.powerCellsGroupBox.Name = "powerCellsGroupBox";
             this.powerCellsGroupBox.Size = new System.Drawing.Size(271, 315);
             this.powerCellsGroupBox.TabIndex = 11;
             this.powerCellsGroupBox.TabStop = false;
             this.powerCellsGroupBox.Text = "Power Cells";
             // 
+            // submitButton
+            // 
+            this.submitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.submitButton.Location = new System.Drawing.Point(184, 391);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(476, 56);
+            this.submitButton.TabIndex = 13;
+            this.submitButton.Text = "Submit Data";
+            this.submitButton.UseVisualStyleBackColor = true;
+            // 
+            // scoutingControlPanel
+            // 
+            this.scoutingControlPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoutingControlPanel.Controls.Add(this.currentRobotLabel);
+            this.scoutingControlPanel.Controls.Add(this.currentRobot);
+            this.scoutingControlPanel.Controls.Add(this.powerCellsGroupBox);
+            this.scoutingControlPanel.Controls.Add(this.colorWheelBox);
+            this.scoutingControlPanel.Controls.Add(this.climbBox);
+            this.scoutingControlPanel.Controls.Add(this.autoBox);
+            this.scoutingControlPanel.Location = new System.Drawing.Point(22, 40);
+            this.scoutingControlPanel.Name = "scoutingControlPanel";
+            this.scoutingControlPanel.Size = new System.Drawing.Size(766, 342);
+            this.scoutingControlPanel.TabIndex = 14;
+            // 
+            // currentRobot
+            // 
+            this.currentRobot.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentRobot.Location = new System.Drawing.Point(560, 65);
+            this.currentRobot.Name = "currentRobot";
+            this.currentRobot.ReadOnly = true;
+            this.currentRobot.Size = new System.Drawing.Size(69, 38);
+            this.currentRobot.TabIndex = 12;
+            this.currentRobot.Text = "1294";
+            // 
+            // currentRobotLabel
+            // 
+            this.currentRobotLabel.AutoSize = true;
+            this.currentRobotLabel.Location = new System.Drawing.Point(557, 49);
+            this.currentRobotLabel.Name = "currentRobotLabel";
+            this.currentRobotLabel.Size = new System.Drawing.Size(76, 13);
+            this.currentRobotLabel.TabIndex = 13;
+            this.currentRobotLabel.Text = "Current Robot:";
+            // 
+            // statusBar
+            // 
+            this.statusBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusBar.Location = new System.Drawing.Point(22, 6);
+            this.statusBar.MarqueeAnimationSpeed = 2;
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(766, 28);
+            this.statusBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.statusBar.TabIndex = 15;
+            // 
             // Scout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.powerCellsGroupBox);
-            this.Controls.Add(this.colorWheelBox);
+            this.Controls.Add(this.statusBar);
+            this.Controls.Add(this.scoutingControlPanel);
+            this.Controls.Add(this.submitButton);
             this.Controls.Add(this.debugLabel);
-            this.Controls.Add(this.climbBox);
-            this.Controls.Add(this.autoBox);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Scout";
             this.Text = "Scout";
             this.autoBox.ResumeLayout(false);
@@ -325,6 +387,8 @@ namespace _1294_Scouting
             this.powerCellsBottomBox.ResumeLayout(false);
             this.powerCellsBottomBox.PerformLayout();
             this.powerCellsGroupBox.ResumeLayout(false);
+            this.scoutingControlPanel.ResumeLayout(false);
+            this.scoutingControlPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +418,10 @@ namespace _1294_Scouting
         private System.Windows.Forms.Button powerCellsBottomAdd;
         private System.Windows.Forms.Label powerCellsBottomLabel;
         private System.Windows.Forms.GroupBox powerCellsGroupBox;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Panel scoutingControlPanel;
+        private System.Windows.Forms.Label currentRobotLabel;
+        private System.Windows.Forms.TextBox currentRobot;
+        private System.Windows.Forms.ProgressBar statusBar;
     }
 }
