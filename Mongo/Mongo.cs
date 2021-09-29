@@ -10,11 +10,12 @@ namespace _1294_Scouting.Mongo
 {
     public class Mongo
     {
+        IMongoCollection<BsonDocument> mongoCollection;
         private MongoClient mongoManager;
         public Mongo()
         {
             mongoManager = new MongoClient("mongodb://localhost:27017");
-
+            mongoCollection = mongoManager.GetDatabase("robotics-test").GetCollection<BsonDocument>("Auburn");
         }
         public void goBrr()
         {
@@ -24,6 +25,15 @@ namespace _1294_Scouting.Mongo
                     {"Team#", 1294 },
                     {"Cells", 24 }
                 });
+        }
+        public void refreshCollection()
+        {
+            mongoCollection = mongoManager.GetDatabase("robotics-test").GetCollection<BsonDocument>("Auburn");
+        }
+        public void sendData(RobotMatchData data)
+        {
+            refreshCollection();
+            mongoCollection.InsertOne(data.GetMongoDocument());
         }
     }
 }

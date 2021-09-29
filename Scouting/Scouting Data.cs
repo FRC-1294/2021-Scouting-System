@@ -1,4 +1,6 @@
-﻿namespace _1294_Scouting
+﻿using MongoDB.Bson;
+
+namespace _1294_Scouting
 {
     //Autonomous
     public enum Auto
@@ -12,7 +14,9 @@
     public enum Climb
     {
         No,
-        Yes
+        Park,
+        Yes,
+        Balance
     }
 
 
@@ -20,32 +24,41 @@
     //Class for data per match per robot (Will be processed)
     public class RobotMatchData
     {
+        public int number;
+        public int match;
         public Auto auto;
         public bool wheelSpin;
         public bool wheelMatch;
-        public bool climb;
+        public Climb climb;
         public int powerCellsTop;
         public int powerCellsBottom;
-        public RobotMatchData()
+        public RobotMatchData(int teamNumber, int thisMatch)
         {
             auto = Auto.None;
             wheelSpin = false;
             wheelMatch = false;
-            climb = false;
+            climb = Climb.No;
             powerCellsBottom = 0;
             powerCellsTop = 0;
+            number = teamNumber;
+            match = thisMatch;
         }
-        public string toString() => $"Autonomous: {auto}\n" +
+        public string toString() => $"Team: {number}" +
+            $"Match: {match}" +
+            $"Autonomous: {auto}\n" +
             $"Power Cells Scored (Top): {powerCellsTop}\n" +
             $"Power Cells Scored (Bottom): {powerCellsBottom}\n" +
                 $"Color Wheel Spun: {wheelSpin}\n" +
                 $"Color Wheel Match: {wheelMatch}\n" +
                 $"Climb: {climb}\n";
-    }
 
-    //Data to send to Mongo
-    public class RobotCompleteData
-    {
-
+        public BsonDocument GetMongoDocument() => new BsonDocument {
+                {"Team Number",  number},
+                {"Match", match },
+                {"PowerCells Top", powerCellsTop},
+                {"PowerCells Bottom", powerCellsBottom },
+                {"Color Wheel", new BsonDocument{{"Spin", wheelSpin}, {"Match", wheelMatch } } },
+                {"Climb", climb }
+            };
     }
 }

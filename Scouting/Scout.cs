@@ -8,12 +8,14 @@ namespace _1294_Scouting
 
     public partial class Scout : Form
     {
+        Mongo.Mongo mongoDB;
         private RobotMatchData data;
         private int robot;
         public Scout()
         {
             InitializeComponent();
-            data = new RobotMatchData();
+            data = new RobotMatchData(robot, 1);
+            mongoDB = new Mongo.Mongo();
         }
 
         public void UpdateData(object sender, EventArgs e)
@@ -34,11 +36,11 @@ namespace _1294_Scouting
             //Climb
             if (climbNo.Checked)
             {
-                data.climb = false;
+                data.climb = Climb.No;
             }
             else if (climbYes.Checked)
             {
-                data.climb = true;
+                data.climb = Climb.Yes;
             }
             //Wheel
 
@@ -151,8 +153,7 @@ namespace _1294_Scouting
 
         public void SubmitData()
         {
-            Mongo.Mongoz m = new Mongo.Mongoz();
-            m.goBrr();
+            mongoDB.sendData(this.data);
         }
 
         public void LostConnection()
