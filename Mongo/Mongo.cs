@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace _1294_Scouting.Mongo
 {
-    public class Mongoz
+    public class Mongo
     {
         private MongoClient mongoManager;
-        public Mongoz()
+        public Mongo()
         {
             mongoManager = new MongoClient("mongodb://localhost:27017");
 
