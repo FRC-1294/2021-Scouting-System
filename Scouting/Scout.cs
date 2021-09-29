@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
@@ -145,10 +147,12 @@ namespace _1294_Scouting
             currentRobot.Text = newRobot.ToString();
 
         }
+        
 
         public void SubmitData()
         {
-
+            Mongo.Mongoz m = new Mongo.Mongoz();
+            m.goBrr();
         }
 
         public void LostConnection()
@@ -165,6 +169,7 @@ namespace _1294_Scouting
         {
             statusBar.Style = ProgressBarStyle.Blocks;            
             statusBar.SetState(2);
+            SubmitData();
         }
     }
 }
