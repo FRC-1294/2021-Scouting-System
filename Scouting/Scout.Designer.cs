@@ -359,7 +359,6 @@ namespace _1294_Scouting
             this.statusBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.statusBar.Location = new System.Drawing.Point(22, 6);
-            this.statusBar.MarqueeAnimationSpeed = 2;
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(766, 28);
             this.statusBar.TabIndex = 15;

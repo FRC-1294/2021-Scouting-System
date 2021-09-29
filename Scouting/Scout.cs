@@ -143,34 +143,17 @@ namespace _1294_Scouting
 
         //Controls
         //These are designed to be run when commands are recieved from the server.
-        public void NextRobot(int newRobot)
-        {
-            robot = newRobot;
-            currentRobot.Text = newRobot.ToString();
-
-        }
-        
-
+            
         public void SubmitData()
         {
-            mongoDB.sendData(this.data);
-        }
-
-        public void LostConnection()
-        {
-            
-        }
-
-        public void GotConnection()
-        {
-
+            mongoDB.SendData(this.data);
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            statusBar.Style = ProgressBarStyle.Blocks;            
-            statusBar.SetState(2);
+            statusBar.SetState(3);
             SubmitData();
+            statusBar.SetState(1);
         }
     }
 }
