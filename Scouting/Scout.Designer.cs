@@ -151,7 +151,7 @@ namespace _1294_Scouting
             // 
             this.debugLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.debugLabel.AutoSize = true;
-            this.debugLabel.Location = new System.Drawing.Point(677, 391);
+            this.debugLabel.Location = new System.Drawing.Point(557, 120);
             this.debugLabel.Name = "debugLabel";
             this.debugLabel.Size = new System.Drawing.Size(48, 13);
             this.debugLabel.TabIndex = 2;
@@ -327,6 +327,7 @@ namespace _1294_Scouting
             this.scoutingControlPanel.Controls.Add(this.currentRobotLabel);
             this.scoutingControlPanel.Controls.Add(this.currentRobot);
             this.scoutingControlPanel.Controls.Add(this.powerCellsGroupBox);
+            this.scoutingControlPanel.Controls.Add(this.debugLabel);
             this.scoutingControlPanel.Controls.Add(this.colorWheelBox);
             this.scoutingControlPanel.Controls.Add(this.climbBox);
             this.scoutingControlPanel.Controls.Add(this.autoBox);
@@ -372,7 +373,6 @@ namespace _1294_Scouting
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.scoutingControlPanel);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.debugLabel);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Scout";
             this.Text = "Scout";
@@ -390,7 +390,6 @@ namespace _1294_Scouting
             this.scoutingControlPanel.ResumeLayout(false);
             this.scoutingControlPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

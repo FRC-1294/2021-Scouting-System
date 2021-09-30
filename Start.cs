@@ -5,22 +5,24 @@ namespace _1294_Scouting
 {
     public partial class Start : Form
     {
+        public Scout SCOUTING_WINDOW;
+        public Server SERVER_WINDOW;
         public Start() => InitializeComponent();
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Scout s = new Scout();
-            s.Show();
+            SCOUTING_WINDOW = new Scout();
+            SCOUTING_WINDOW.Show();
             Hide();
-            s.FormClosed += new FormClosedEventHandler(Close);
+            SCOUTING_WINDOW.FormClosed += new FormClosedEventHandler(Close);
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Server s = new Server();
-            s.Show();
+            SERVER_WINDOW = new Server();
+            SERVER_WINDOW.Show();
             Hide();
-            s.FormClosed += new FormClosedEventHandler(Close);
+            SERVER_WINDOW.FormClosed += new FormClosedEventHandler(Close);
         }
 
         private void Close(object sender, EventArgs e) => Close();

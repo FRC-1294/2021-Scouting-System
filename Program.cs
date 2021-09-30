@@ -5,6 +5,7 @@ namespace _1294_Scouting
 {
     internal static class Program
     {
+        public static Start START;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -13,7 +14,8 @@ namespace _1294_Scouting
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Start());
+            START = new Start();
+            Application.Run(START);
         }
     }
 }

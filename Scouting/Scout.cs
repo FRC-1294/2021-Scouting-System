@@ -14,6 +14,8 @@ namespace _1294_Scouting
         {
             InitializeComponent();
             mongoDB = new Mongo.Mongo();
+            Scouting.LeTester leubertest = new Scouting.LeTester();
+            leubertest.Show();
         }
 
         public void UpdateData(object sender, EventArgs e)
@@ -52,6 +54,9 @@ namespace _1294_Scouting
             //Power cells
             powerCellsTop.Text = data.powerCellsTop.ToString();
             powerCellsBottom.Text = data.powerCellsBottom.ToString();
+
+            //Robot
+            currentRobot.Text = data.number.ToString();
 
             //Debug output
             debugLabel.Text = data.ToString();
