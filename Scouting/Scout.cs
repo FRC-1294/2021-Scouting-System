@@ -58,6 +58,9 @@ namespace _1294_Scouting
             //Robot
             currentRobot.Text = data.number.ToString();
 
+            //Match
+            currentMatch.Text = data.match.ToString();
+
             //Debug output
             debugLabel.Text = data.ToString();
         }

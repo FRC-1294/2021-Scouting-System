@@ -56,6 +56,8 @@ namespace _1294_Scouting
             this.currentRobotLabel = new System.Windows.Forms.Label();
             this.currentRobot = new System.Windows.Forms.TextBox();
             this.statusBar = new System.Windows.Forms.ProgressBar();
+            this.currentMatchLabel = new System.Windows.Forms.Label();
+            this.currentMatch = new System.Windows.Forms.TextBox();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
@@ -151,7 +153,7 @@ namespace _1294_Scouting
             // 
             this.debugLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.debugLabel.AutoSize = true;
-            this.debugLabel.Location = new System.Drawing.Point(557, 120);
+            this.debugLabel.Location = new System.Drawing.Point(557, 180);
             this.debugLabel.Name = "debugLabel";
             this.debugLabel.Size = new System.Drawing.Size(48, 13);
             this.debugLabel.TabIndex = 2;
@@ -324,6 +326,8 @@ namespace _1294_Scouting
             // scoutingControlPanel
             // 
             this.scoutingControlPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoutingControlPanel.Controls.Add(this.currentMatch);
+            this.scoutingControlPanel.Controls.Add(this.currentMatchLabel);
             this.scoutingControlPanel.Controls.Add(this.currentRobotLabel);
             this.scoutingControlPanel.Controls.Add(this.currentRobot);
             this.scoutingControlPanel.Controls.Add(this.powerCellsGroupBox);
@@ -353,7 +357,6 @@ namespace _1294_Scouting
             this.currentRobot.ReadOnly = true;
             this.currentRobot.Size = new System.Drawing.Size(69, 38);
             this.currentRobot.TabIndex = 12;
-            this.currentRobot.Text = "1294";
             // 
             // statusBar
             // 
@@ -364,6 +367,24 @@ namespace _1294_Scouting
             this.statusBar.Size = new System.Drawing.Size(766, 28);
             this.statusBar.TabIndex = 15;
             this.statusBar.Value = 100;
+            // 
+            // currentMatchLabel
+            // 
+            this.currentMatchLabel.AutoSize = true;
+            this.currentMatchLabel.Location = new System.Drawing.Point(560, 113);
+            this.currentMatchLabel.Name = "currentMatchLabel";
+            this.currentMatchLabel.Size = new System.Drawing.Size(77, 13);
+            this.currentMatchLabel.TabIndex = 14;
+            this.currentMatchLabel.Text = "Current Match:";
+            // 
+            // currentMatch
+            // 
+            this.currentMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentMatch.Location = new System.Drawing.Point(560, 129);
+            this.currentMatch.Name = "currentMatch";
+            this.currentMatch.ReadOnly = true;
+            this.currentMatch.Size = new System.Drawing.Size(69, 38);
+            this.currentMatch.TabIndex = 15;
             // 
             // Scout
             // 
@@ -422,5 +443,7 @@ namespace _1294_Scouting
         private System.Windows.Forms.Label currentRobotLabel;
         private System.Windows.Forms.TextBox currentRobot;
         private System.Windows.Forms.ProgressBar statusBar;
+        private System.Windows.Forms.TextBox currentMatch;
+        private System.Windows.Forms.Label currentMatchLabel;
     }
 }
