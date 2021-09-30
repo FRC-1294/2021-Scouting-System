@@ -43,7 +43,7 @@ namespace _1294_Scouting
             number = teamNumber;
             match = thisMatch;
         }
-        public string toString() => $"Team: {number}" +
+        public override string ToString() => $"Team: {number}" +
             $"Match: {match}" +
             $"Autonomous: {auto}\n" +
             $"Power Cells Scored (Top): {powerCellsTop}\n" +

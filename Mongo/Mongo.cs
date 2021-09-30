@@ -12,22 +12,16 @@ namespace _1294_Scouting.Mongo
     {
         const string mongoConnectionString = "mongodb://localhost:27017";
         const string mongoDatabaseName = "robotics-test";
-        const string mongoCollectionName = "Auburn";
-        IMongoCollection<BsonDocument> mongoCollection;
+        IMongoDatabase mongoDatabase;
         private MongoClient mongoManager;
         public Mongo()
         {
             mongoManager = new MongoClient(mongoConnectionString);
-            mongoCollection = mongoManager.GetDatabase(mongoDatabaseName).GetCollection<BsonDocument>(mongoCollectionName);
+            mongoDatabase = mongoManager.GetDatabase(mongoDatabaseName);
         }
-        public void RefreshCollection()
+        public void SendData(BsonDocument data, int teamNumber)
         {
-            mongoCollection = mongoManager.GetDatabase(mongoDatabaseName).GetCollection<BsonDocument>(mongoCollectionName);
-        }
-        public void SendData(RobotMatchData data)
-        {
-            RefreshCollection();
-            mongoCollection.InsertOne(data.GetMongoDocument());
+            mongoDatabase.GetCollection<BsonDocument>(teamNumber.ToString()).InsertOne(data);
         }
     }
 }

@@ -10,15 +10,17 @@ namespace _1294_Scouting
     {
         Mongo.Mongo mongoDB;
         private RobotMatchData data;
-        private int robot;
         public Scout()
         {
             InitializeComponent();
-            data = new RobotMatchData(robot, 1);
             mongoDB = new Mongo.Mongo();
         }
 
         public void UpdateData(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+        public void UpdateData()
         {
             //Autonomous
             if (autoNo.Checked)
@@ -52,7 +54,7 @@ namespace _1294_Scouting
             powerCellsBottom.Text = data.powerCellsBottom.ToString();
 
             //Debug output
-            debugLabel.Text = data.toString();
+            debugLabel.Text = data.ToString();
         }
 
         //POWER CELLS
@@ -66,7 +68,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsTop = int.Parse(powerCellsTop.Text);
-                    UpdateData(sender, e);
+                    UpdateData();
                 }
                 catch
                 {
@@ -84,7 +86,7 @@ namespace _1294_Scouting
         private void powerCellTopAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsTop++;
-            UpdateData(sender, e);
+            UpdateData();
         }
         private void powerCellsTopSubtract_Click(object sender, EventArgs e)
         {
@@ -95,7 +97,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsTop--;
-                UpdateData(sender, e);
+                UpdateData();
             }
         }
 
@@ -107,7 +109,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsBottom = int.Parse(powerCellsBottom.Text);
-                    UpdateData(sender, e);
+                    UpdateData();
                 }
                 catch
                 {
@@ -125,7 +127,7 @@ namespace _1294_Scouting
         private void powerCellsBottomAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsBottom++;
-            UpdateData(sender, e);
+            UpdateData();
         }
         private void powerCellsBottomSubtract_Click(object sender, EventArgs e)
         {
@@ -136,7 +138,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsBottom--;
-                UpdateData(sender, e);
+                UpdateData();
             }
         }
         #endregion
@@ -146,7 +148,7 @@ namespace _1294_Scouting
             
         public void SubmitData()
         {
-            mongoDB.SendData(this.data);
+            mongoDB.SendData(data.GetMongoDocument(), data.number);
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -154,6 +156,12 @@ namespace _1294_Scouting
             statusBar.SetState(3);
             SubmitData();
             statusBar.SetState(1);
+        }
+
+        public void nextMatch(int teamNumber, int match)
+        {
+            data = new RobotMatchData(teamNumber, match);
+            UpdateData();
         }
     }
 }
