@@ -88,7 +88,7 @@ namespace _1294_Scouting
             this.autoScore.TabIndex = 2;
             this.autoScore.Text = "Scored Points";
             this.autoScore.UseVisualStyleBackColor = true;
-            this.autoScore.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.autoScore.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // autoMove
             // 
@@ -99,7 +99,7 @@ namespace _1294_Scouting
             this.autoMove.TabIndex = 1;
             this.autoMove.Text = "Moved off line";
             this.autoMove.UseVisualStyleBackColor = true;
-            this.autoMove.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.autoMove.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // autoNo
             // 
@@ -112,7 +112,7 @@ namespace _1294_Scouting
             this.autoNo.TabStop = true;
             this.autoNo.Text = "No";
             this.autoNo.UseVisualStyleBackColor = true;
-            this.autoNo.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.autoNo.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // climbBox
             // 
@@ -134,7 +134,7 @@ namespace _1294_Scouting
             this.climbYes.TabIndex = 1;
             this.climbYes.Text = "Yes";
             this.climbYes.UseVisualStyleBackColor = true;
-            this.climbYes.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.climbYes.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // climbNo
             // 
@@ -147,7 +147,7 @@ namespace _1294_Scouting
             this.climbNo.TabStop = true;
             this.climbNo.Text = "No";
             this.climbNo.UseVisualStyleBackColor = true;
-            this.climbNo.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.climbNo.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // debugLabel
             // 
@@ -179,7 +179,7 @@ namespace _1294_Scouting
             this.wheelMatch.TabIndex = 1;
             this.wheelMatch.Text = "Match Color";
             this.wheelMatch.UseVisualStyleBackColor = true;
-            this.wheelMatch.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.wheelMatch.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // wheelSpin
             // 
@@ -190,7 +190,7 @@ namespace _1294_Scouting
             this.wheelSpin.TabIndex = 0;
             this.wheelSpin.Text = "Spin";
             this.wheelSpin.UseVisualStyleBackColor = true;
-            this.wheelSpin.CheckedChanged += new System.EventHandler(this.UpdateData);
+            this.wheelSpin.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
             // powerCellsTopLabel
             // 

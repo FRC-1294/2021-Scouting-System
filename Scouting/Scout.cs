@@ -18,11 +18,11 @@ namespace _1294_Scouting
             leubertest.Show();
         }
 
-        public void UpdateData(object sender, EventArgs e)
+        public void UpdateCheckBoxes(object sender, EventArgs e)
         {
-            UpdateData();
+            UpdateCheckBoxes();
         }
-        public void UpdateData()
+        public void UpdateCheckBoxes()
         {
             //Autonomous
             if (autoNo.Checked)
@@ -50,6 +50,34 @@ namespace _1294_Scouting
 
             data.wheelMatch = wheelMatch.Checked;
             data.wheelSpin = wheelSpin.Checked;
+            RefreshScreen();
+        }
+
+        public void RefreshScreen()
+        {
+            //Auto
+            if(data.auto == Auto.None)
+            {
+                autoNo.Checked = true;
+            } else if (data.auto == Auto.Moved)
+            {
+                autoMove.Checked = true;
+            } else if (data.auto == Auto.Scored)
+            {
+                autoScore.Checked = true;
+            }
+
+            if (data.climb == Climb.No)
+            {
+                climbNo.Checked = true;
+            } else if (data.climb == Climb.Yes)
+            {
+                climbYes.Checked = true;
+            }
+
+            //Wheel
+            wheelSpin.Checked = data.wheelSpin; //TODO Fix Bug
+            wheelMatch.Checked = data.wheelMatch;
 
             //Power cells
             powerCellsTop.Text = data.powerCellsTop.ToString();
@@ -76,7 +104,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsTop = int.Parse(powerCellsTop.Text);
-                    UpdateData();
+                    RefreshScreen();
                 }
                 catch
                 {
@@ -94,7 +122,7 @@ namespace _1294_Scouting
         private void powerCellTopAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsTop++;
-            UpdateData();
+            RefreshScreen();
         }
         private void powerCellsTopSubtract_Click(object sender, EventArgs e)
         {
@@ -105,7 +133,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsTop--;
-                UpdateData();
+                RefreshScreen();
             }
         }
 
@@ -117,7 +145,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsBottom = int.Parse(powerCellsBottom.Text);
-                    UpdateData();
+                    RefreshScreen();
                 }
                 catch
                 {
@@ -135,7 +163,7 @@ namespace _1294_Scouting
         private void powerCellsBottomAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsBottom++;
-            UpdateData();
+            RefreshScreen();
         }
         private void powerCellsBottomSubtract_Click(object sender, EventArgs e)
         {
@@ -146,7 +174,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsBottom--;
-                UpdateData();
+                RefreshScreen();
             }
         }
         #endregion
@@ -169,7 +197,7 @@ namespace _1294_Scouting
         public void nextMatch(int teamNumber, int match)
         {
             data = new RobotMatchData(teamNumber, match);
-            UpdateData();
+            RefreshScreen();
         }
     }
 }
