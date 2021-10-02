@@ -5,9 +5,10 @@ using System.Windows.Forms;
 
 namespace _1294_Scouting
 {
-
+    
     public partial class Scout : Form
     {
+        private bool allowDataChange = true;
         Mongo.Mongo mongoDB;
         private RobotMatchData data;
         public Scout()
@@ -20,7 +21,10 @@ namespace _1294_Scouting
 
         public void UpdateCheckBoxes(object sender, EventArgs e)
         {
-            UpdateCheckBoxes();
+            if(allowDataChange)
+            {
+                UpdateCheckBoxes();
+            }
         }
         public void UpdateCheckBoxes()
         {
@@ -55,6 +59,7 @@ namespace _1294_Scouting
 
         public void RefreshScreen()
         {
+            allowDataChange = false;
             //Auto
             if(data.auto == Auto.None)
             {
@@ -76,7 +81,7 @@ namespace _1294_Scouting
             }
 
             //Wheel
-            wheelSpin.Checked = data.wheelSpin; //TODO Fix Bug
+            wheelSpin.Checked = data.wheelSpin;
             wheelMatch.Checked = data.wheelMatch;
 
             //Power cells
@@ -91,6 +96,7 @@ namespace _1294_Scouting
 
             //Debug output
             debugLabel.Text = data.ToString();
+            allowDataChange = true;
         }
 
         //POWER CELLS
@@ -197,6 +203,11 @@ namespace _1294_Scouting
         public void nextMatch(int teamNumber, int match)
         {
             data = new RobotMatchData(teamNumber, match);
+            RefreshScreen();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
             RefreshScreen();
         }
     }

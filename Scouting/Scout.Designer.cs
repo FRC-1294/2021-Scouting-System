@@ -53,11 +53,12 @@ namespace _1294_Scouting
             this.powerCellsGroupBox = new System.Windows.Forms.GroupBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.scoutingControlPanel = new System.Windows.Forms.Panel();
+            this.currentMatch = new System.Windows.Forms.TextBox();
+            this.currentMatchLabel = new System.Windows.Forms.Label();
             this.currentRobotLabel = new System.Windows.Forms.Label();
             this.currentRobot = new System.Windows.Forms.TextBox();
             this.statusBar = new System.Windows.Forms.ProgressBar();
-            this.currentMatchLabel = new System.Windows.Forms.Label();
-            this.currentMatch = new System.Windows.Forms.TextBox();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
@@ -340,6 +341,24 @@ namespace _1294_Scouting
             this.scoutingControlPanel.Size = new System.Drawing.Size(766, 342);
             this.scoutingControlPanel.TabIndex = 14;
             // 
+            // currentMatch
+            // 
+            this.currentMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentMatch.Location = new System.Drawing.Point(560, 129);
+            this.currentMatch.Name = "currentMatch";
+            this.currentMatch.ReadOnly = true;
+            this.currentMatch.Size = new System.Drawing.Size(69, 38);
+            this.currentMatch.TabIndex = 15;
+            // 
+            // currentMatchLabel
+            // 
+            this.currentMatchLabel.AutoSize = true;
+            this.currentMatchLabel.Location = new System.Drawing.Point(560, 113);
+            this.currentMatchLabel.Name = "currentMatchLabel";
+            this.currentMatchLabel.Size = new System.Drawing.Size(77, 13);
+            this.currentMatchLabel.TabIndex = 14;
+            this.currentMatchLabel.Text = "Current Match:";
+            // 
             // currentRobotLabel
             // 
             this.currentRobotLabel.AutoSize = true;
@@ -368,29 +387,22 @@ namespace _1294_Scouting
             this.statusBar.TabIndex = 15;
             this.statusBar.Value = 100;
             // 
-            // currentMatchLabel
+            // refreshButton
             // 
-            this.currentMatchLabel.AutoSize = true;
-            this.currentMatchLabel.Location = new System.Drawing.Point(560, 113);
-            this.currentMatchLabel.Name = "currentMatchLabel";
-            this.currentMatchLabel.Size = new System.Drawing.Size(77, 13);
-            this.currentMatchLabel.TabIndex = 14;
-            this.currentMatchLabel.Text = "Current Match:";
-            // 
-            // currentMatch
-            // 
-            this.currentMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentMatch.Location = new System.Drawing.Point(560, 129);
-            this.currentMatch.Name = "currentMatch";
-            this.currentMatch.ReadOnly = true;
-            this.currentMatch.Size = new System.Drawing.Size(69, 38);
-            this.currentMatch.TabIndex = 15;
+            this.refreshButton.Location = new System.Drawing.Point(681, 415);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(57, 20);
+            this.refreshButton.TabIndex = 16;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // Scout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.scoutingControlPanel);
             this.Controls.Add(this.submitButton);
@@ -445,5 +457,6 @@ namespace _1294_Scouting
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.TextBox currentMatch;
         private System.Windows.Forms.Label currentMatchLabel;
+        private System.Windows.Forms.Button refreshButton;
     }
 }
