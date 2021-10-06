@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
@@ -31,6 +32,18 @@ namespace _1294_Scouting
                 sendArm.Text = "Check to arm";
             }
 
+        }
+
+        private void aggregateButton_Click(object sender, EventArgs e)
+        {
+            Mongo.Mongo m = new Mongo.Mongo();
+            var result = m.getAggreation();
+            string outputText = "";
+            foreach (BsonDocument doc in result.ToArray())
+            {
+                outputText += doc.ToString() + "\n";
+            }
+            aggregationResult.Text = outputText;
         }
     }
 }

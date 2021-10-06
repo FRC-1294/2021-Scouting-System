@@ -50,15 +50,17 @@ namespace _1294_Scouting
             this.b2Team = new System.Windows.Forms.Label();
             this.b3Team = new System.Windows.Forms.Label();
             this.r1Input = new System.Windows.Forms.TextBox();
-            this.sendButton = new System.Windows.Forms.Button();
-            this.sendArm = new System.Windows.Forms.CheckBox();
-            this.nextMatchBox = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
             this.progressBar5 = new System.Windows.Forms.ProgressBar();
             this.progressBar6 = new System.Windows.Forms.ProgressBar();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.sendArm = new System.Windows.Forms.CheckBox();
+            this.nextMatchBox = new System.Windows.Forms.GroupBox();
+            this.aggregateButton = new System.Windows.Forms.Button();
+            this.aggregationResult = new System.Windows.Forms.Label();
             this.teamTable.SuspendLayout();
             this.nextMatchBox.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +89,7 @@ namespace _1294_Scouting
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.teamTable.Controls.Add(this.r1Label, 0, 0);
             this.teamTable.Controls.Add(this.r1Team, 1, 0);
             this.teamTable.Controls.Add(this.r2Input, 2, 1);
@@ -274,40 +276,6 @@ namespace _1294_Scouting
             this.r1Input.Size = new System.Drawing.Size(100, 20);
             this.r1Input.TabIndex = 0;
             // 
-            // sendButton
-            // 
-            this.sendButton.Enabled = false;
-            this.sendButton.Location = new System.Drawing.Point(6, 286);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(261, 79);
-            this.sendButton.TabIndex = 4;
-            this.sendButton.Text = "disarmed";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
-            // 
-            // sendArm
-            // 
-            this.sendArm.AutoSize = true;
-            this.sendArm.Location = new System.Drawing.Point(6, 263);
-            this.sendArm.Name = "sendArm";
-            this.sendArm.Size = new System.Drawing.Size(89, 17);
-            this.sendArm.TabIndex = 5;
-            this.sendArm.Text = "Check to arm";
-            this.sendArm.UseVisualStyleBackColor = true;
-            this.sendArm.CheckedChanged += new System.EventHandler(this.sendArm_CheckedChanged);
-            // 
-            // nextMatchBox
-            // 
-            this.nextMatchBox.Controls.Add(this.sendArm);
-            this.nextMatchBox.Controls.Add(this.sendButton);
-            this.nextMatchBox.Controls.Add(this.teamTable);
-            this.nextMatchBox.Location = new System.Drawing.Point(12, 12);
-            this.nextMatchBox.Name = "nextMatchBox";
-            this.nextMatchBox.Size = new System.Drawing.Size(413, 377);
-            this.nextMatchBox.TabIndex = 6;
-            this.nextMatchBox.TabStop = false;
-            this.nextMatchBox.Text = "Next Match";
-            // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -362,11 +330,66 @@ namespace _1294_Scouting
             this.progressBar6.Size = new System.Drawing.Size(134, 23);
             this.progressBar6.TabIndex = 26;
             // 
+            // sendButton
+            // 
+            this.sendButton.Enabled = false;
+            this.sendButton.Location = new System.Drawing.Point(6, 286);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(261, 79);
+            this.sendButton.TabIndex = 4;
+            this.sendButton.Text = "disarmed";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
+            // 
+            // sendArm
+            // 
+            this.sendArm.AutoSize = true;
+            this.sendArm.Location = new System.Drawing.Point(6, 263);
+            this.sendArm.Name = "sendArm";
+            this.sendArm.Size = new System.Drawing.Size(89, 17);
+            this.sendArm.TabIndex = 5;
+            this.sendArm.Text = "Check to arm";
+            this.sendArm.UseVisualStyleBackColor = true;
+            this.sendArm.CheckedChanged += new System.EventHandler(this.sendArm_CheckedChanged);
+            // 
+            // nextMatchBox
+            // 
+            this.nextMatchBox.Controls.Add(this.sendArm);
+            this.nextMatchBox.Controls.Add(this.sendButton);
+            this.nextMatchBox.Controls.Add(this.teamTable);
+            this.nextMatchBox.Location = new System.Drawing.Point(12, 12);
+            this.nextMatchBox.Name = "nextMatchBox";
+            this.nextMatchBox.Size = new System.Drawing.Size(413, 377);
+            this.nextMatchBox.TabIndex = 6;
+            this.nextMatchBox.TabStop = false;
+            this.nextMatchBox.Text = "Next Match";
+            // 
+            // aggregateButton
+            // 
+            this.aggregateButton.Location = new System.Drawing.Point(547, 131);
+            this.aggregateButton.Name = "aggregateButton";
+            this.aggregateButton.Size = new System.Drawing.Size(116, 23);
+            this.aggregateButton.TabIndex = 7;
+            this.aggregateButton.Text = "AGGREGATE";
+            this.aggregateButton.UseVisualStyleBackColor = true;
+            this.aggregateButton.Click += new System.EventHandler(this.aggregateButton_Click);
+            // 
+            // aggregationResult
+            // 
+            this.aggregationResult.AutoSize = true;
+            this.aggregationResult.Location = new System.Drawing.Point(547, 161);
+            this.aggregationResult.Name = "aggregationResult";
+            this.aggregationResult.Size = new System.Drawing.Size(35, 13);
+            this.aggregationResult.TabIndex = 8;
+            this.aggregationResult.Text = "label1";
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1121, 617);
+            this.Controls.Add(this.aggregationResult);
+            this.Controls.Add(this.aggregateButton);
             this.Controls.Add(this.nextMatchBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
@@ -412,5 +435,7 @@ namespace _1294_Scouting
         private System.Windows.Forms.ProgressBar progressBar4;
         private System.Windows.Forms.ProgressBar progressBar5;
         private System.Windows.Forms.ProgressBar progressBar6;
+        private System.Windows.Forms.Button aggregateButton;
+        private System.Windows.Forms.Label aggregationResult;
     }
 }

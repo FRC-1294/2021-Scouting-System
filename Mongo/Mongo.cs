@@ -1,10 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _1294_Scouting.Mongo
 {
@@ -19,9 +14,25 @@ namespace _1294_Scouting.Mongo
             mongoManager = new MongoClient(mongoConnectionString);
             mongoDatabase = mongoManager.GetDatabase(mongoDatabaseName);
         }
-        public void SendData(BsonDocument data, int teamNumber)
+        public void SendData(BsonDocument data)
         {
-            mongoDatabase.GetCollection<BsonDocument>(teamNumber.ToString()).InsertOne(data);
+            mongoDatabase.GetCollection<BsonDocument>("Robots").InsertOne(data);
+        }
+        public System.Collections.Generic.List<BsonDocument> getAggreation()
+        {
+            BsonDocument[] pipeline = new BsonDocument[]
+{
+    new BsonDocument("$group",
+    new BsonDocument
+        {
+            { "_id", "$Team Number" },
+            { "CommitAveragePowerCellsTop",
+    new BsonDocument("$avg", "$PowerCells Top") },
+            { "CommitSumPowerCellsBottom",
+    new BsonDocument("$sum", "$PowerCells Bottom") }
+        })
+};
+            return mongoDatabase.GetCollection<BsonDocument>("Robots").Aggregate<BsonDocument>(pipeline).ToList();
         }
     }
 }

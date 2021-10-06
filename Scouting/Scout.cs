@@ -190,7 +190,7 @@ namespace _1294_Scouting
             
         public void SubmitData()
         {
-            mongoDB.SendData(data.GetMongoDocument(), data.number);
+            mongoDB.SendData(data.GetMongoDocument());
         }
 
         private void submitButton_Click(object sender, EventArgs e)
