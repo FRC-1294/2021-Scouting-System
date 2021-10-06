@@ -212,7 +212,7 @@ namespace _1294_Scouting
             this.powerCellTopAdd.Text = "+";
             this.powerCellTopAdd.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.powerCellTopAdd.UseVisualStyleBackColor = true;
-            this.powerCellTopAdd.Click += new System.EventHandler(this.powerCellTopAdd_Click);
+            this.powerCellTopAdd.Click += new System.EventHandler(this.PowerCellTopAdd_Click);
             // 
             // powerCellsTopSubtract
             // 
@@ -223,7 +223,7 @@ namespace _1294_Scouting
             this.powerCellsTopSubtract.TabIndex = 7;
             this.powerCellsTopSubtract.Text = "-";
             this.powerCellsTopSubtract.UseVisualStyleBackColor = true;
-            this.powerCellsTopSubtract.Click += new System.EventHandler(this.powerCellsTopSubtract_Click);
+            this.powerCellsTopSubtract.Click += new System.EventHandler(this.PowerCellsTopSubtract_Click);
             // 
             // powerCellsTop
             // 
@@ -234,7 +234,7 @@ namespace _1294_Scouting
             this.powerCellsTop.Size = new System.Drawing.Size(68, 59);
             this.powerCellsTop.TabIndex = 8;
             this.powerCellsTop.Text = "0";
-            this.powerCellsTop.TextChanged += new System.EventHandler(this.powerCellsTop_TextChanged);
+            this.powerCellsTop.TextChanged += new System.EventHandler(this.PowerCellsTop_TextChanged);
             // 
             // powerCellsTopBox
             // 
@@ -267,7 +267,7 @@ namespace _1294_Scouting
             this.powerCellsBottom.Size = new System.Drawing.Size(68, 59);
             this.powerCellsBottom.TabIndex = 8;
             this.powerCellsBottom.Text = "0";
-            this.powerCellsBottom.TextChanged += new System.EventHandler(this.powerCellsBottom_TextChanged);
+            this.powerCellsBottom.TextChanged += new System.EventHandler(this.PowerCellsBottom_TextChanged);
             // 
             // powerCellsBottomSubtract
             // 
@@ -278,7 +278,7 @@ namespace _1294_Scouting
             this.powerCellsBottomSubtract.TabIndex = 7;
             this.powerCellsBottomSubtract.Text = "-";
             this.powerCellsBottomSubtract.UseVisualStyleBackColor = true;
-            this.powerCellsBottomSubtract.Click += new System.EventHandler(this.powerCellsBottomSubtract_Click);
+            this.powerCellsBottomSubtract.Click += new System.EventHandler(this.PowerCellsBottomSubtract_Click);
             // 
             // powerCellsBottomAdd
             // 
@@ -290,7 +290,7 @@ namespace _1294_Scouting
             this.powerCellsBottomAdd.Text = "+";
             this.powerCellsBottomAdd.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.powerCellsBottomAdd.UseVisualStyleBackColor = true;
-            this.powerCellsBottomAdd.Click += new System.EventHandler(this.powerCellsBottomAdd_Click);
+            this.powerCellsBottomAdd.Click += new System.EventHandler(this.PowerCellsBottomAdd_Click);
             // 
             // powerCellsBottomLabel
             // 
@@ -322,7 +322,7 @@ namespace _1294_Scouting
             this.submitButton.TabIndex = 13;
             this.submitButton.Text = "Submit Data";
             this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.submitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // scoutingControlPanel
             // 
@@ -395,7 +395,7 @@ namespace _1294_Scouting
             this.refreshButton.TabIndex = 16;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // Scout
             // 

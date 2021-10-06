@@ -103,7 +103,7 @@ namespace _1294_Scouting
         #region powerCells
 
         //Top
-        private void powerCellsTop_TextChanged(object sender, EventArgs e)
+        private void PowerCellsTop_TextChanged(object sender, EventArgs e)
         {
             if (powerCellsTop.Text != "")
             {
@@ -125,12 +125,12 @@ namespace _1294_Scouting
                 }
             }
         }
-        private void powerCellTopAdd_Click(object sender, EventArgs e)
+        private void PowerCellTopAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsTop++;
             RefreshScreen();
         }
-        private void powerCellsTopSubtract_Click(object sender, EventArgs e)
+        private void PowerCellsTopSubtract_Click(object sender, EventArgs e)
         {
             if (data.powerCellsTop - 1 < 0)
             {
@@ -144,7 +144,7 @@ namespace _1294_Scouting
         }
 
         //Bottom
-        private void powerCellsBottom_TextChanged(object sender, EventArgs e)
+        private void PowerCellsBottom_TextChanged(object sender, EventArgs e)
         {
             if (powerCellsBottom.Text != "")
             {
@@ -166,12 +166,12 @@ namespace _1294_Scouting
                 }
             }
         }
-        private void powerCellsBottomAdd_Click(object sender, EventArgs e)
+        private void PowerCellsBottomAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsBottom++;
             RefreshScreen();
         }
-        private void powerCellsBottomSubtract_Click(object sender, EventArgs e)
+        private void PowerCellsBottomSubtract_Click(object sender, EventArgs e)
         {
             if (data.powerCellsBottom - 1 < 0)
             {
@@ -193,20 +193,20 @@ namespace _1294_Scouting
             mongoDB.SendData(data.GetMongoDocument());
         }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void SubmitButton_Click(object sender, EventArgs e)
         {
             statusBar.SetState(3);
             SubmitData();
             statusBar.SetState(1);
         }
 
-        public void nextMatch(int teamNumber, int match)
+        public void NextMatch(int teamNumber, int match)
         {
             data = new RobotMatchData(teamNumber, match);
             RefreshScreen();
         }
 
-        private void refreshButton_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             RefreshScreen();
         }

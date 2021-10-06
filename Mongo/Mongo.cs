@@ -18,7 +18,7 @@ namespace _1294_Scouting.Mongo
         {
             mongoDatabase.GetCollection<BsonDocument>("Robots").InsertOne(data);
         }
-        public System.Collections.Generic.List<BsonDocument> getAggreation()
+        public System.Collections.Generic.List<BsonDocument> GetAggreation()
         {
             BsonDocument[] pipeline = new BsonDocument[]
 {

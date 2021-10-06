@@ -8,7 +8,7 @@ namespace _1294_Scouting
     {
         public Server() => InitializeComponent();
 
-        private void sendButton_Click(object sender, EventArgs e)
+        private void SendButton_Click(object sender, EventArgs e)
         {
             if (sendArm.Checked)
             {
@@ -17,7 +17,7 @@ namespace _1294_Scouting
             }
         }
 
-        private void sendArm_CheckedChanged(object sender, EventArgs e)
+        private void SendArm_CheckedChanged(object sender, EventArgs e)
         {
             if (sendArm.Checked)
             {
@@ -34,14 +34,16 @@ namespace _1294_Scouting
 
         }
 
-        private void aggregateButton_Click(object sender, EventArgs e)
+        private void AggregateButton_Click(object sender, EventArgs e)
         {
             Mongo.Mongo m = new Mongo.Mongo();
-            var result = m.getAggreation();
+            System.Collections.Generic.List<BsonDocument> result = m.GetAggreation();
             string outputText = "";
             foreach (BsonDocument doc in result.ToArray())
             {
-                outputText += doc.ToString() + "\n";
+                outputText += $"Team: {doc.GetValue("_id", "NOT FOUND").AsString}\n" +
+                    $"average top powercells: {doc.GetValue("CommitAveragePowerCellsTop", "NOT FOUND").AsDouble : 0.0}\n" +
+                    $"Debug: {doc.ToString()}\n\n";                
             }
             aggregationResult.Text = outputText;
         }

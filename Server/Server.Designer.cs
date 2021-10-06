@@ -339,7 +339,7 @@ namespace _1294_Scouting
             this.sendButton.TabIndex = 4;
             this.sendButton.Text = "disarmed";
             this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
+            this.sendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
             // sendArm
             // 
@@ -350,7 +350,7 @@ namespace _1294_Scouting
             this.sendArm.TabIndex = 5;
             this.sendArm.Text = "Check to arm";
             this.sendArm.UseVisualStyleBackColor = true;
-            this.sendArm.CheckedChanged += new System.EventHandler(this.sendArm_CheckedChanged);
+            this.sendArm.CheckedChanged += new System.EventHandler(this.SendArm_CheckedChanged);
             // 
             // nextMatchBox
             // 
@@ -372,7 +372,7 @@ namespace _1294_Scouting
             this.aggregateButton.TabIndex = 7;
             this.aggregateButton.Text = "AGGREGATE";
             this.aggregateButton.UseVisualStyleBackColor = true;
-            this.aggregateButton.Click += new System.EventHandler(this.aggregateButton_Click);
+            this.aggregateButton.Click += new System.EventHandler(this.AggregateButton_Click);
             // 
             // aggregationResult
             // 

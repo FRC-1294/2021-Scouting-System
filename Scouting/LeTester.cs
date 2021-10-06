@@ -19,7 +19,7 @@ namespace _1294_Scouting.Scouting
 
         private void SendMatch_Click(object sender, EventArgs e)
         {
-            Program.START.SCOUTING_WINDOW.nextMatch(int.Parse(Robot.Text), int.Parse( Match.Text));
+            Program.START.SCOUTING_WINDOW.NextMatch(int.Parse(Robot.Text), int.Parse( Match.Text));
         }
     }
 }
