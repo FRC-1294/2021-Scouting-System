@@ -59,6 +59,7 @@ namespace _1294_Scouting
             this.currentRobot = new System.Windows.Forms.TextBox();
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.overrideServerBox = new System.Windows.Forms.CheckBox();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
@@ -327,6 +328,7 @@ namespace _1294_Scouting
             // scoutingControlPanel
             // 
             this.scoutingControlPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoutingControlPanel.Controls.Add(this.overrideServerBox);
             this.scoutingControlPanel.Controls.Add(this.currentMatch);
             this.scoutingControlPanel.Controls.Add(this.currentMatchLabel);
             this.scoutingControlPanel.Controls.Add(this.currentRobotLabel);
@@ -397,6 +399,16 @@ namespace _1294_Scouting
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
+            // overrideServerBox
+            // 
+            this.overrideServerBox.AutoSize = true;
+            this.overrideServerBox.Location = new System.Drawing.Point(549, 244);
+            this.overrideServerBox.Name = "overrideServerBox";
+            this.overrideServerBox.Size = new System.Drawing.Size(129, 17);
+            this.overrideServerBox.TabIndex = 16;
+            this.overrideServerBox.Text = "OVERRIDE SERVER";
+            this.overrideServerBox.UseVisualStyleBackColor = true;
+            // 
             // Scout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,5 +470,6 @@ namespace _1294_Scouting
         private System.Windows.Forms.TextBox currentMatch;
         private System.Windows.Forms.Label currentMatchLabel;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.CheckBox overrideServerBox;
     }
 }
