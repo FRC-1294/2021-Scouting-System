@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mongo\Mongo.cs" />
+    <Compile Include="Parsing.cs" />
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Scouting\LeTester.cs">
       <SubType>Form</SubType>

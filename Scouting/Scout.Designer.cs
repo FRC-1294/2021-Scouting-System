@@ -34,9 +34,10 @@ namespace _1294_Scouting
             this.autoMove = new System.Windows.Forms.RadioButton();
             this.autoNo = new System.Windows.Forms.RadioButton();
             this.climbBox = new System.Windows.Forms.GroupBox();
+            this.climbBalance = new System.Windows.Forms.RadioButton();
+            this.climbPark = new System.Windows.Forms.RadioButton();
             this.climbYes = new System.Windows.Forms.RadioButton();
             this.climbNo = new System.Windows.Forms.RadioButton();
-            this.debugLabel = new System.Windows.Forms.Label();
             this.colorWheelBox = new System.Windows.Forms.GroupBox();
             this.wheelMatch = new System.Windows.Forms.CheckBox();
             this.wheelSpin = new System.Windows.Forms.CheckBox();
@@ -53,13 +54,15 @@ namespace _1294_Scouting
             this.powerCellsGroupBox = new System.Windows.Forms.GroupBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.scoutingControlPanel = new System.Windows.Forms.Panel();
+            this.overrideServerBox = new System.Windows.Forms.CheckBox();
             this.currentMatch = new System.Windows.Forms.TextBox();
             this.currentMatchLabel = new System.Windows.Forms.Label();
             this.currentRobotLabel = new System.Windows.Forms.Label();
             this.currentRobot = new System.Windows.Forms.TextBox();
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.overrideServerBox = new System.Windows.Forms.CheckBox();
+            this.scoutNumber = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
@@ -118,23 +121,49 @@ namespace _1294_Scouting
             // 
             // climbBox
             // 
+            this.climbBox.Controls.Add(this.climbBalance);
+            this.climbBox.Controls.Add(this.climbPark);
             this.climbBox.Controls.Add(this.climbYes);
             this.climbBox.Controls.Add(this.climbNo);
             this.climbBox.Location = new System.Drawing.Point(305, 120);
             this.climbBox.Name = "climbBox";
-            this.climbBox.Size = new System.Drawing.Size(116, 73);
+            this.climbBox.Size = new System.Drawing.Size(116, 116);
             this.climbBox.TabIndex = 1;
             this.climbBox.TabStop = false;
             this.climbBox.Text = "Climb";
             // 
+            // climbBalance
+            // 
+            this.climbBalance.AutoSize = true;
+            this.climbBalance.Location = new System.Drawing.Point(7, 82);
+            this.climbBalance.Name = "climbBalance";
+            this.climbBalance.Size = new System.Drawing.Size(64, 17);
+            this.climbBalance.TabIndex = 3;
+            this.climbBalance.TabStop = true;
+            this.climbBalance.Text = "Balance";
+            this.climbBalance.UseVisualStyleBackColor = true;
+            this.climbBalance.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
+            // 
+            // climbPark
+            // 
+            this.climbPark.AutoSize = true;
+            this.climbPark.Location = new System.Drawing.Point(7, 40);
+            this.climbPark.Name = "climbPark";
+            this.climbPark.Size = new System.Drawing.Size(47, 17);
+            this.climbPark.TabIndex = 2;
+            this.climbPark.TabStop = true;
+            this.climbPark.Text = "Park";
+            this.climbPark.UseVisualStyleBackColor = true;
+            this.climbPark.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
+            // 
             // climbYes
             // 
             this.climbYes.AutoSize = true;
-            this.climbYes.Location = new System.Drawing.Point(7, 44);
+            this.climbYes.Location = new System.Drawing.Point(7, 61);
             this.climbYes.Name = "climbYes";
-            this.climbYes.Size = new System.Drawing.Size(43, 17);
+            this.climbYes.Size = new System.Drawing.Size(51, 17);
             this.climbYes.TabIndex = 1;
-            this.climbYes.Text = "Yes";
+            this.climbYes.Text = "Hang";
             this.climbYes.UseVisualStyleBackColor = true;
             this.climbYes.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
@@ -151,21 +180,11 @@ namespace _1294_Scouting
             this.climbNo.UseVisualStyleBackColor = true;
             this.climbNo.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
             // 
-            // debugLabel
-            // 
-            this.debugLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.debugLabel.AutoSize = true;
-            this.debugLabel.Location = new System.Drawing.Point(557, 180);
-            this.debugLabel.Name = "debugLabel";
-            this.debugLabel.Size = new System.Drawing.Size(48, 13);
-            this.debugLabel.TabIndex = 2;
-            this.debugLabel.Text = "DEBUG:";
-            // 
             // colorWheelBox
             // 
             this.colorWheelBox.Controls.Add(this.wheelMatch);
             this.colorWheelBox.Controls.Add(this.wheelSpin);
-            this.colorWheelBox.Location = new System.Drawing.Point(305, 199);
+            this.colorWheelBox.Location = new System.Drawing.Point(305, 254);
             this.colorWheelBox.Name = "colorWheelBox";
             this.colorWheelBox.Size = new System.Drawing.Size(97, 76);
             this.colorWheelBox.TabIndex = 3;
@@ -317,9 +336,9 @@ namespace _1294_Scouting
             // 
             this.submitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.submitButton.Location = new System.Drawing.Point(184, 391);
+            this.submitButton.Location = new System.Drawing.Point(22, 388);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(476, 56);
+            this.submitButton.Size = new System.Drawing.Size(507, 56);
             this.submitButton.TabIndex = 13;
             this.submitButton.Text = "Submit Data";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -328,25 +347,30 @@ namespace _1294_Scouting
             // scoutingControlPanel
             // 
             this.scoutingControlPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.scoutingControlPanel.Controls.Add(this.overrideServerBox);
-            this.scoutingControlPanel.Controls.Add(this.currentMatch);
-            this.scoutingControlPanel.Controls.Add(this.currentMatchLabel);
-            this.scoutingControlPanel.Controls.Add(this.currentRobotLabel);
-            this.scoutingControlPanel.Controls.Add(this.currentRobot);
             this.scoutingControlPanel.Controls.Add(this.powerCellsGroupBox);
-            this.scoutingControlPanel.Controls.Add(this.debugLabel);
             this.scoutingControlPanel.Controls.Add(this.colorWheelBox);
             this.scoutingControlPanel.Controls.Add(this.climbBox);
             this.scoutingControlPanel.Controls.Add(this.autoBox);
             this.scoutingControlPanel.Location = new System.Drawing.Point(22, 40);
             this.scoutingControlPanel.Name = "scoutingControlPanel";
-            this.scoutingControlPanel.Size = new System.Drawing.Size(766, 342);
+            this.scoutingControlPanel.Size = new System.Drawing.Size(526, 342);
             this.scoutingControlPanel.TabIndex = 14;
+            // 
+            // overrideServerBox
+            // 
+            this.overrideServerBox.AutoSize = true;
+            this.overrideServerBox.Location = new System.Drawing.Point(613, 259);
+            this.overrideServerBox.Name = "overrideServerBox";
+            this.overrideServerBox.Size = new System.Drawing.Size(129, 17);
+            this.overrideServerBox.TabIndex = 16;
+            this.overrideServerBox.Text = "OVERRIDE SERVER";
+            this.overrideServerBox.UseVisualStyleBackColor = true;
+            this.overrideServerBox.CheckedChanged += new System.EventHandler(this.overrideServerBox_CheckedChanged);
             // 
             // currentMatch
             // 
             this.currentMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentMatch.Location = new System.Drawing.Point(560, 129);
+            this.currentMatch.Location = new System.Drawing.Point(641, 200);
             this.currentMatch.Name = "currentMatch";
             this.currentMatch.ReadOnly = true;
             this.currentMatch.Size = new System.Drawing.Size(69, 38);
@@ -355,7 +379,7 @@ namespace _1294_Scouting
             // currentMatchLabel
             // 
             this.currentMatchLabel.AutoSize = true;
-            this.currentMatchLabel.Location = new System.Drawing.Point(560, 113);
+            this.currentMatchLabel.Location = new System.Drawing.Point(641, 184);
             this.currentMatchLabel.Name = "currentMatchLabel";
             this.currentMatchLabel.Size = new System.Drawing.Size(77, 13);
             this.currentMatchLabel.TabIndex = 14;
@@ -364,7 +388,7 @@ namespace _1294_Scouting
             // currentRobotLabel
             // 
             this.currentRobotLabel.AutoSize = true;
-            this.currentRobotLabel.Location = new System.Drawing.Point(557, 49);
+            this.currentRobotLabel.Location = new System.Drawing.Point(638, 120);
             this.currentRobotLabel.Name = "currentRobotLabel";
             this.currentRobotLabel.Size = new System.Drawing.Size(76, 13);
             this.currentRobotLabel.TabIndex = 13;
@@ -373,7 +397,7 @@ namespace _1294_Scouting
             // currentRobot
             // 
             this.currentRobot.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentRobot.Location = new System.Drawing.Point(560, 65);
+            this.currentRobot.Location = new System.Drawing.Point(641, 136);
             this.currentRobot.Name = "currentRobot";
             this.currentRobot.ReadOnly = true;
             this.currentRobot.Size = new System.Drawing.Size(69, 38);
@@ -391,32 +415,45 @@ namespace _1294_Scouting
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(681, 415);
+            this.refreshButton.Location = new System.Drawing.Point(595, 313);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(57, 20);
+            this.refreshButton.Size = new System.Drawing.Size(166, 57);
             this.refreshButton.TabIndex = 16;
-            this.refreshButton.Text = "Refresh";
+            this.refreshButton.Text = "Get next match and robot from server";
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
-            // overrideServerBox
+            // scoutNumber
             // 
-            this.overrideServerBox.AutoSize = true;
-            this.overrideServerBox.Location = new System.Drawing.Point(549, 244);
-            this.overrideServerBox.Name = "overrideServerBox";
-            this.overrideServerBox.Size = new System.Drawing.Size(129, 17);
-            this.overrideServerBox.TabIndex = 16;
-            this.overrideServerBox.Text = "OVERRIDE SERVER";
-            this.overrideServerBox.UseVisualStyleBackColor = true;
+            this.scoutNumber.Location = new System.Drawing.Point(680, 55);
+            this.scoutNumber.Name = "scoutNumber";
+            this.scoutNumber.Size = new System.Drawing.Size(62, 20);
+            this.scoutNumber.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(592, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "You are scout #";
             // 
             // Scout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.scoutNumber);
+            this.Controls.Add(this.overrideServerBox);
             this.Controls.Add(this.refreshButton);
+            this.Controls.Add(this.currentMatch);
             this.Controls.Add(this.statusBar);
+            this.Controls.Add(this.currentMatchLabel);
             this.Controls.Add(this.scoutingControlPanel);
+            this.Controls.Add(this.currentRobotLabel);
+            this.Controls.Add(this.currentRobot);
             this.Controls.Add(this.submitButton);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Scout";
@@ -433,8 +470,8 @@ namespace _1294_Scouting
             this.powerCellsBottomBox.PerformLayout();
             this.powerCellsGroupBox.ResumeLayout(false);
             this.scoutingControlPanel.ResumeLayout(false);
-            this.scoutingControlPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -447,7 +484,6 @@ namespace _1294_Scouting
         private System.Windows.Forms.GroupBox climbBox;
         private System.Windows.Forms.RadioButton climbYes;
         private System.Windows.Forms.RadioButton climbNo;
-        private System.Windows.Forms.Label debugLabel;
         private System.Windows.Forms.GroupBox colorWheelBox;
         private System.Windows.Forms.CheckBox wheelMatch;
         private System.Windows.Forms.CheckBox wheelSpin;
@@ -471,5 +507,9 @@ namespace _1294_Scouting
         private System.Windows.Forms.Label currentMatchLabel;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.CheckBox overrideServerBox;
+        private System.Windows.Forms.TextBox scoutNumber;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton climbBalance;
+        private System.Windows.Forms.RadioButton climbPark;
     }
 }

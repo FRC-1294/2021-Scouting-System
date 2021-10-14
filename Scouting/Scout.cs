@@ -1,11 +1,9 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
 {
-    
+
     public partial class Scout : Form
     {
         private bool allowDataChange = true;
@@ -23,10 +21,10 @@ namespace _1294_Scouting
         {
             if(allowDataChange)
             {
-                UpdateCheckBoxes();
+                UpdateRobotDataWithCheckBoxes();
             }
         }
-        public void UpdateCheckBoxes()
+        public void UpdateRobotDataWithCheckBoxes()
         {
             //Autonomous
             if (autoNo.Checked)
@@ -49,15 +47,21 @@ namespace _1294_Scouting
             else if (climbYes.Checked)
             {
                 data.climb = Climb.Yes;
+            } else if (climbPark.Checked)
+            {
+                data.climb = Climb.Park;
+            } else if (climbBalance.Checked)
+            {
+                data.climb = Climb.Balance;
             }
             //Wheel
 
             data.wheelMatch = wheelMatch.Checked;
             data.wheelSpin = wheelSpin.Checked;
-            RefreshScreen();
+            RefreshScreenWithRobotData();
         }
 
-        public void RefreshScreen()
+        public void RefreshScreenWithRobotData()
         {
             allowDataChange = false;
             //Auto
@@ -78,6 +82,12 @@ namespace _1294_Scouting
             } else if (data.climb == Climb.Yes)
             {
                 climbYes.Checked = true;
+            } else if (data.climb == Climb.Park)
+            {
+                climbPark.Checked = true;
+            } else if (data.climb == Climb.Balance)
+            {
+                climbBalance.Checked = true;
             }
 
             //Wheel
@@ -95,7 +105,6 @@ namespace _1294_Scouting
             currentMatch.Text = data.match.ToString();
 
             //Debug output
-            debugLabel.Text = data.ToString();
             allowDataChange = true;
         }
 
@@ -110,7 +119,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsTop = int.Parse(powerCellsTop.Text);
-                    RefreshScreen();
+                    RefreshScreenWithRobotData();
                 }
                 catch
                 {
@@ -128,7 +137,7 @@ namespace _1294_Scouting
         private void PowerCellTopAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsTop++;
-            RefreshScreen();
+            RefreshScreenWithRobotData();
         }
         private void PowerCellsTopSubtract_Click(object sender, EventArgs e)
         {
@@ -139,7 +148,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsTop--;
-                RefreshScreen();
+                RefreshScreenWithRobotData();
             }
         }
 
@@ -151,7 +160,7 @@ namespace _1294_Scouting
                 try
                 {
                     data.powerCellsBottom = int.Parse(powerCellsBottom.Text);
-                    RefreshScreen();
+                    RefreshScreenWithRobotData();
                 }
                 catch
                 {
@@ -169,7 +178,7 @@ namespace _1294_Scouting
         private void PowerCellsBottomAdd_Click(object sender, EventArgs e)
         {
             data.powerCellsBottom++;
-            RefreshScreen();
+            RefreshScreenWithRobotData();
         }
         private void PowerCellsBottomSubtract_Click(object sender, EventArgs e)
         {
@@ -180,7 +189,7 @@ namespace _1294_Scouting
             else
             {
                 data.powerCellsBottom--;
-                RefreshScreen();
+                RefreshScreenWithRobotData();
             }
         }
         #endregion
@@ -195,6 +204,7 @@ namespace _1294_Scouting
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
+            LockUI();
             statusBar.SetState(3);
             SubmitData();
             statusBar.SetState(1);
@@ -203,12 +213,51 @@ namespace _1294_Scouting
         public void NextMatch(int teamNumber, int match)
         {
             data = new RobotMatchData(teamNumber, match);
-            RefreshScreen();
+            RefreshScreenWithRobotData();
+            UnlockUI();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            RefreshScreen();
+            //TODO Add logic for overriden server
+            if(scoutNumber.canValidate())
+            {
+                int.Parse(scoutNumber.Text);
+                //TODO Get data from server
+            } else
+            {
+                MessageBox.Show("Invalid scout number. Try again!");
+            }
         }
+
+        private void overrideServerBox_CheckedChanged(object sender, EventArgs e)
+        {
+            UnlockUI();
+            if(overrideServerBox.Checked)
+            {
+                currentRobot.ReadOnly = false;
+                currentMatch.ReadOnly = false;
+                refreshButton.Text = "Setup for next match using above robot and match";
+            } else
+            {
+                currentRobot.ReadOnly = true;
+                currentMatch.ReadOnly = true;
+                refreshButton.Text = "Get next match and robot from server";
+            }
+        }
+
+        private void LockUI()
+        {
+            if(!overrideServerBox.Checked)
+            {
+                scoutingControlPanel.Enabled = false;
+            }
+        }
+
+        private void UnlockUI()
+        {
+            scoutingControlPanel.Enabled = true;
+        }
+      
     }
 }
