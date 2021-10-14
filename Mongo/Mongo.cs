@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Threading;
 
 namespace _1294_Scouting.Mongo
 {
@@ -16,7 +17,7 @@ namespace _1294_Scouting.Mongo
         }
         public void SendData(BsonDocument data)
         {
-            mongoDatabase.GetCollection<BsonDocument>("Robots").InsertOne(data);
+            mongoDatabase.GetCollection<BsonDocument>("Robots").InsertOne(data);            
         }
         public System.Collections.Generic.List<BsonDocument> GetAggreation()
         {

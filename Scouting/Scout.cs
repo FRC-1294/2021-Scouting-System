@@ -13,8 +13,9 @@ namespace _1294_Scouting
         {
             InitializeComponent();
             mongoDB = new Mongo.Mongo();
-            Scouting.LeTester leubertest = new Scouting.LeTester();
-            leubertest.Show();
+            //Scouting.LeTester leubertest = new Scouting.LeTester();
+            //leubertest.Show();
+            LockUI();
         }
 
         public void UpdateCheckBoxes(object sender, EventArgs e)
@@ -206,8 +207,19 @@ namespace _1294_Scouting
         {
             LockUI();
             statusBar.SetState(3);
-            SubmitData();
-            statusBar.SetState(1);
+            submitButton.Text = "Sumbitting data...";
+            try
+            {
+                SubmitData();
+                statusBar.SetState(1);
+            } catch (TimeoutException)
+            {
+                statusBar.SetState(2);
+                MessageBox.Show("Unable to send data to server.");
+            } finally
+            {
+                submitButton.Text = "Submit Data";
+            }
         }
 
         public void NextMatch(int teamNumber, int match)
@@ -215,6 +227,7 @@ namespace _1294_Scouting
             data = new RobotMatchData(teamNumber, match);
             RefreshScreenWithRobotData();
             UnlockUI();
+            statusBar.SetState(1);
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
@@ -230,34 +243,42 @@ namespace _1294_Scouting
             }
         }
 
-        private void overrideServerBox_CheckedChanged(object sender, EventArgs e)
+        private void OverrideServerBox_CheckedChanged(object sender, EventArgs e)
         {
-            UnlockUI();
             if(overrideServerBox.Checked)
             {
-                currentRobot.ReadOnly = false;
-                currentMatch.ReadOnly = false;
-                refreshButton.Text = "Setup for next match using above robot and match";
+                getDataFromServerButton.Enabled = false;
+                serverOverridePanel.Visible = true;
             } else
             {
-                currentRobot.ReadOnly = true;
-                currentMatch.ReadOnly = true;
-                refreshButton.Text = "Get next match and robot from server";
+                getDataFromServerButton.Enabled = true;
+                serverOverridePanel.Visible = false;
             }
         }
 
         private void LockUI()
         {
-            if(!overrideServerBox.Checked)
-            {
-                scoutingControlPanel.Enabled = false;
-            }
+           scoutingControlPanel.Enabled = false;            
         }
 
         private void UnlockUI()
         {
             scoutingControlPanel.Enabled = true;
         }
-      
+
+        private void OverrideButton_Click(object sender, EventArgs e)
+        {
+            if(!overrideRobotBox.canValidate())
+            {
+                MessageBox.Show("Invalid Robot number. Try again!");
+                return;
+            }
+            if(!overrideMatchBox.canValidate())
+            {
+                MessageBox.Show("Invalid Match number. Try again!");
+                return;
+            }
+            NextMatch(int.Parse(overrideRobotBox.Text), int.Parse(overrideMatchBox.Text));
+        }
     }
 }

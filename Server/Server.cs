@@ -41,9 +41,9 @@ namespace _1294_Scouting
             string outputText = "";
             foreach (BsonDocument doc in result.ToArray())
             {
-                outputText += $"Team: {doc.GetValue("_id", "NOT FOUND").ToString()}\n" +
+                outputText += $"Team: {doc.GetValue("_id", "NOT FOUND")}\n" +
                     $"average top powercells: {doc.GetValue("CommitAveragePowerCellsTop", "NOT FOUND").AsDouble : 0.0}\n" +
-                    $"Debug: {doc.ToString()}\n\n";                
+                    $"Debug: {doc}\n\n";                
             }
             aggregationResult.Text = outputText;
         }
