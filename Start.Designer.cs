@@ -32,6 +32,7 @@ namespace _1294_Scouting
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.PreMatchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +48,7 @@ namespace _1294_Scouting
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DarkGreen;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(104, 216);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 92);
@@ -68,12 +69,25 @@ namespace _1294_Scouting
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // PreMatchButton
+            // 
+            this.PreMatchButton.BackColor = System.Drawing.Color.DeepPink;
+            this.PreMatchButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PreMatchButton.Location = new System.Drawing.Point(104, 314);
+            this.PreMatchButton.Name = "PreMatchButton";
+            this.PreMatchButton.Size = new System.Drawing.Size(169, 92);
+            this.PreMatchButton.TabIndex = 1;
+            this.PreMatchButton.Text = "Scouting";
+            this.PreMatchButton.UseVisualStyleBackColor = false;
+            this.PreMatchButton.Click += new System.EventHandler(this.PreMatchButton_Click);
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.PreMatchButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -91,6 +105,7 @@ namespace _1294_Scouting
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button PreMatchButton;
     }
 }
 

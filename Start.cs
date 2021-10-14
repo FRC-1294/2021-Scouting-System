@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1294_Scouting.Pre_Match;
+using System;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
@@ -7,6 +8,7 @@ namespace _1294_Scouting
     {
         public Scout SCOUTING_WINDOW;
         public Server SERVER_WINDOW;
+        public PreMatch PREMATCH_WINDOW;
         public Start() => InitializeComponent();
 
         private void Button1_Click(object sender, EventArgs e)
@@ -26,5 +28,13 @@ namespace _1294_Scouting
         }
 
         private void Close(object sender, EventArgs e) => Close();
+
+        private void PreMatchButton_Click(object sender, EventArgs e)
+        {
+            PREMATCH_WINDOW = new PreMatch();
+            PREMATCH_WINDOW.Show();
+            Hide();
+            PREMATCH_WINDOW.FormClosed += new FormClosedEventHandler(Close);
+        }
     }
 }
