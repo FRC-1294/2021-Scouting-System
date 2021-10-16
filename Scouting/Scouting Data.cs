@@ -32,6 +32,7 @@ namespace _1294_Scouting
         public Climb climb;
         public int powerCellsTop;
         public int powerCellsBottom;
+        public bool defense;
         public RobotMatchData(int teamNumber, int thisMatch)
         {
             auto = Auto.None;
@@ -42,6 +43,7 @@ namespace _1294_Scouting
             powerCellsTop = 0;
             number = teamNumber;
             match = thisMatch;
+            defense = false;
         }
         public override string ToString() => $"Team: {number}" +
             $"Match: {match}" +
@@ -52,13 +54,19 @@ namespace _1294_Scouting
                 $"Color Wheel Match: {wheelMatch}\n" +
                 $"Climb: {climb}\n";
 
-        public BsonDocument GetMongoDocument() => new BsonDocument {
+        public BsonDocument GetMongoDocument() {
+            int wheelSpinInt = wheelSpin ? 1 : 0;
+            int wheelMatchInt = wheelMatch ? 1 : 0;
+            int defenseInt = defense ? 1 : 0;
+            return new BsonDocument {
                 {"Team Number",  number},
                 {"Match", match },
                 {"PowerCells Top", powerCellsTop},
                 {"PowerCells Bottom", powerCellsBottom },
-                {"Color Wheel", new BsonDocument{{"Spin", wheelSpin}, {"Match", wheelMatch } } },
+                {"Color Wheel", new BsonDocument{{"Spin", wheelSpinInt}, {"Match", wheelMatchInt } } },
+                {"Defense", defenseInt },
                 {"Climb", climb }
             };
+        }
     }
 }

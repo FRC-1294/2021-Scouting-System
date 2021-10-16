@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Windows.Forms;
 
 namespace _1294_Scouting
@@ -12,10 +13,10 @@ namespace _1294_Scouting
         public Scout()
         {
             InitializeComponent();
-            mongoDB = new Mongo.Mongo();
             //Scouting.LeTester leubertest = new Scouting.LeTester();
             //leubertest.Show();
             LockUI();
+            getDataFromServerButton.Enabled = false;
         }
 
         public void UpdateCheckBoxes(object sender, EventArgs e)
@@ -59,6 +60,7 @@ namespace _1294_Scouting
 
             data.wheelMatch = wheelMatch.Checked;
             data.wheelSpin = wheelSpin.Checked;
+            data.defense = defenceBox.Checked;
             RefreshScreenWithRobotData();
         }
 
@@ -94,6 +96,9 @@ namespace _1294_Scouting
             //Wheel
             wheelSpin.Checked = data.wheelSpin;
             wheelMatch.Checked = data.wheelMatch;
+
+            //Defense
+            defenceBox.Checked = data.defense;
 
             //Power cells
             powerCellsTop.Text = data.powerCellsTop.ToString();
@@ -200,7 +205,7 @@ namespace _1294_Scouting
             
         public void SubmitData()
         {
-            mongoDB.SendData(data.GetMongoDocument());
+            mongoDB.SendMatchData(data.GetMongoDocument());
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -232,15 +237,25 @@ namespace _1294_Scouting
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            //TODO Add logic for overriden server
-            if(scoutNumber.canValidate())
-            {
-                int.Parse(scoutNumber.Text);
-                //TODO Get data from server
-            } else
+            BsonDocument config = mongoDB.GetConfigFromServer();
+            //Check if scout number exists
+            if(!config.Contains(scoutNumber.Text))
             {
                 MessageBox.Show("Invalid scout number. Try again!");
+                return;
             }
+
+            //Get the data
+            if(data != null)
+            {
+                if(data.number == config.GetValue(scoutNumber.Text).AsInt32 && data.match == config.GetValue("match").AsInt32)
+                {
+                    MessageBox.Show("No new data yet");
+                    return;
+                }
+            }
+            NextMatch(config.GetValue(scoutNumber.Text).AsInt32, config.GetValue("match").AsInt32);
+
         }
 
         private void OverrideServerBox_CheckedChanged(object sender, EventArgs e)
@@ -279,6 +294,12 @@ namespace _1294_Scouting
                 return;
             }
             NextMatch(int.Parse(overrideRobotBox.Text), int.Parse(overrideMatchBox.Text));
+        }
+
+        private void serverConnect_Click(object sender, EventArgs e)
+        {
+            mongoDB = new Mongo.Mongo(serverAddress.Text);
+            getDataFromServerButton.Enabled = true;
         }
     }
 }

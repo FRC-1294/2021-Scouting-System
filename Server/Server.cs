@@ -2,6 +2,8 @@
 using MongoDB.Bson;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 
 namespace _1294_Scouting
 {
@@ -10,7 +12,6 @@ namespace _1294_Scouting
         Mongo.Mongo m;
         public Server() {
             InitializeComponent();
-            m = new Mongo.Mongo();
         }
 
         private void SendButton_Click(object sender, EventArgs e)
@@ -30,6 +31,8 @@ namespace _1294_Scouting
                         {"s5", int.Parse(s5Input.Text)},
                         {"s6", int.Parse(s6Input.Text)}
                     };
+                    m.NukeConfig();
+                    m.SendData(controlData, "Config");
                     currentMatchBox.Text = nextMatchBox.Text;
                     s1Team.Text = s1Input.Text;
                     s2Team.Text = s2Input.Text;
@@ -63,17 +66,35 @@ namespace _1294_Scouting
 
         }
 
-        private void AggregateButton_Click(object sender, EventArgs e)
+
+        public static List<string> GetLocalIPAddress()
         {
-            List<BsonDocument> result = m.GetAggreation();
-            string outputText = "";
-            foreach (BsonDocument doc in result.ToArray())
+            List<string> output = new List<string>();
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
             {
-                outputText += $"Team: {doc.GetValue("_id", "NOT FOUND")}\n" +
-                    $"average top powercells: {doc.GetValue("CommitAveragePowerCellsTop", "NOT FOUND").AsDouble : 0.0}\n" +
-                    $"Debug: {doc}\n\n";                
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    output.Add(ip.ToString());
+                }
             }
-            aggregationResult.Text = outputText;
+            return output;
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            nextRobotDataBox.Enabled = true;
+            m = new Mongo.Mongo(serverAddressBox.Text);
+        }
+
+        private void getIpButton_Click(object sender, EventArgs e)
+        {
+            getIpLabel.Text = "";
+            List<string> localIpAddresses = GetLocalIPAddress();
+            foreach (string ip in localIpAddresses)
+            {
+                getIpLabel.Text += $"{ip}\n";
+            }
         }
     }
 }

@@ -69,6 +69,10 @@ namespace _1294_Scouting
             this.overrideMatchBox = new System.Windows.Forms.TextBox();
             this.overrideRobotLabel = new System.Windows.Forms.Label();
             this.overrideMatchLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.serverAddress = new System.Windows.Forms.TextBox();
+            this.serverConnect = new System.Windows.Forms.Button();
+            this.defenceBox = new System.Windows.Forms.CheckBox();
             this.autoBox.SuspendLayout();
             this.climbBox.SuspendLayout();
             this.colorWheelBox.SuspendLayout();
@@ -191,7 +195,7 @@ namespace _1294_Scouting
             // 
             this.colorWheelBox.Controls.Add(this.wheelMatch);
             this.colorWheelBox.Controls.Add(this.wheelSpin);
-            this.colorWheelBox.Location = new System.Drawing.Point(305, 254);
+            this.colorWheelBox.Location = new System.Drawing.Point(305, 242);
             this.colorWheelBox.Name = "colorWheelBox";
             this.colorWheelBox.Size = new System.Drawing.Size(97, 76);
             this.colorWheelBox.TabIndex = 3;
@@ -352,6 +356,7 @@ namespace _1294_Scouting
             // 
             // scoutingControlPanel
             // 
+            this.scoutingControlPanel.Controls.Add(this.defenceBox);
             this.scoutingControlPanel.Controls.Add(this.powerCellsGroupBox);
             this.scoutingControlPanel.Controls.Add(this.colorWheelBox);
             this.scoutingControlPanel.Controls.Add(this.climbBox);
@@ -364,7 +369,7 @@ namespace _1294_Scouting
             // overrideServerBox
             // 
             this.overrideServerBox.AutoSize = true;
-            this.overrideServerBox.Location = new System.Drawing.Point(659, 83);
+            this.overrideServerBox.Location = new System.Drawing.Point(659, 120);
             this.overrideServerBox.Name = "overrideServerBox";
             this.overrideServerBox.Size = new System.Drawing.Size(129, 17);
             this.overrideServerBox.TabIndex = 16;
@@ -375,7 +380,7 @@ namespace _1294_Scouting
             // currentMatch
             // 
             this.currentMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentMatch.Location = new System.Drawing.Point(529, 227);
+            this.currentMatch.Location = new System.Drawing.Point(529, 264);
             this.currentMatch.Name = "currentMatch";
             this.currentMatch.ReadOnly = true;
             this.currentMatch.Size = new System.Drawing.Size(69, 38);
@@ -384,7 +389,7 @@ namespace _1294_Scouting
             // currentMatchLabel
             // 
             this.currentMatchLabel.AutoSize = true;
-            this.currentMatchLabel.Location = new System.Drawing.Point(529, 211);
+            this.currentMatchLabel.Location = new System.Drawing.Point(529, 248);
             this.currentMatchLabel.Name = "currentMatchLabel";
             this.currentMatchLabel.Size = new System.Drawing.Size(77, 13);
             this.currentMatchLabel.TabIndex = 14;
@@ -393,7 +398,7 @@ namespace _1294_Scouting
             // currentRobotLabel
             // 
             this.currentRobotLabel.AutoSize = true;
-            this.currentRobotLabel.Location = new System.Drawing.Point(526, 147);
+            this.currentRobotLabel.Location = new System.Drawing.Point(526, 184);
             this.currentRobotLabel.Name = "currentRobotLabel";
             this.currentRobotLabel.Size = new System.Drawing.Size(76, 13);
             this.currentRobotLabel.TabIndex = 13;
@@ -402,7 +407,7 @@ namespace _1294_Scouting
             // currentRobot
             // 
             this.currentRobot.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentRobot.Location = new System.Drawing.Point(529, 163);
+            this.currentRobot.Location = new System.Drawing.Point(529, 200);
             this.currentRobot.Name = "currentRobot";
             this.currentRobot.ReadOnly = true;
             this.currentRobot.Size = new System.Drawing.Size(69, 38);
@@ -420,7 +425,7 @@ namespace _1294_Scouting
             // 
             // getDataFromServerButton
             // 
-            this.getDataFromServerButton.Location = new System.Drawing.Point(515, 270);
+            this.getDataFromServerButton.Location = new System.Drawing.Point(515, 307);
             this.getDataFromServerButton.Name = "getDataFromServerButton";
             this.getDataFromServerButton.Size = new System.Drawing.Size(98, 57);
             this.getDataFromServerButton.TabIndex = 16;
@@ -430,7 +435,7 @@ namespace _1294_Scouting
             // 
             // scoutNumber
             // 
-            this.scoutNumber.Location = new System.Drawing.Point(589, 52);
+            this.scoutNumber.Location = new System.Drawing.Point(589, 37);
             this.scoutNumber.Name = "scoutNumber";
             this.scoutNumber.Size = new System.Drawing.Size(62, 20);
             this.scoutNumber.TabIndex = 17;
@@ -438,7 +443,7 @@ namespace _1294_Scouting
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(501, 55);
+            this.label1.Location = new System.Drawing.Point(500, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 18;
@@ -451,7 +456,7 @@ namespace _1294_Scouting
             this.serverOverridePanel.Controls.Add(this.overrideMatchBox);
             this.serverOverridePanel.Controls.Add(this.overrideRobotLabel);
             this.serverOverridePanel.Controls.Add(this.overrideMatchLabel);
-            this.serverOverridePanel.Location = new System.Drawing.Point(641, 120);
+            this.serverOverridePanel.Location = new System.Drawing.Point(641, 157);
             this.serverOverridePanel.Name = "serverOverridePanel";
             this.serverOverridePanel.Size = new System.Drawing.Size(136, 225);
             this.serverOverridePanel.TabIndex = 19;
@@ -501,11 +506,51 @@ namespace _1294_Scouting
             this.overrideMatchLabel.TabIndex = 22;
             this.overrideMatchLabel.Text = "Next Match:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(501, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Connection String:";
+            // 
+            // serverAddress
+            // 
+            this.serverAddress.Location = new System.Drawing.Point(589, 63);
+            this.serverAddress.Name = "serverAddress";
+            this.serverAddress.Size = new System.Drawing.Size(199, 20);
+            this.serverAddress.TabIndex = 21;
+            // 
+            // serverConnect
+            // 
+            this.serverConnect.Location = new System.Drawing.Point(589, 89);
+            this.serverConnect.Name = "serverConnect";
+            this.serverConnect.Size = new System.Drawing.Size(121, 23);
+            this.serverConnect.TabIndex = 22;
+            this.serverConnect.Text = "Connect to server";
+            this.serverConnect.UseVisualStyleBackColor = true;
+            this.serverConnect.Click += new System.EventHandler(this.serverConnect_Click);
+            // 
+            // defenceBox
+            // 
+            this.defenceBox.AutoSize = true;
+            this.defenceBox.Location = new System.Drawing.Point(305, 322);
+            this.defenceBox.Name = "defenceBox";
+            this.defenceBox.Size = new System.Drawing.Size(67, 17);
+            this.defenceBox.TabIndex = 12;
+            this.defenceBox.Text = "Defence";
+            this.defenceBox.UseVisualStyleBackColor = true;
+            this.defenceBox.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxes);
+            // 
             // Scout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.serverConnect);
+            this.Controls.Add(this.serverAddress);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.serverOverridePanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.scoutNumber);
@@ -533,6 +578,7 @@ namespace _1294_Scouting
             this.powerCellsBottomBox.PerformLayout();
             this.powerCellsGroupBox.ResumeLayout(false);
             this.scoutingControlPanel.ResumeLayout(false);
+            this.scoutingControlPanel.PerformLayout();
             this.serverOverridePanel.ResumeLayout(false);
             this.serverOverridePanel.PerformLayout();
             this.ResumeLayout(false);
@@ -582,5 +628,9 @@ namespace _1294_Scouting
         private System.Windows.Forms.TextBox overrideMatchBox;
         private System.Windows.Forms.Label overrideRobotLabel;
         private System.Windows.Forms.Label overrideMatchLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox serverAddress;
+        private System.Windows.Forms.Button serverConnect;
+        private System.Windows.Forms.CheckBox defenceBox;
     }
 }

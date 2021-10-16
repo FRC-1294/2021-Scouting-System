@@ -29,8 +29,6 @@ namespace _1294_Scouting
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.teamTable = new System.Windows.Forms.TableLayoutPanel();
             this.r1Label = new System.Windows.Forms.Label();
             this.s1Team = new System.Windows.Forms.Label();
@@ -59,31 +57,20 @@ namespace _1294_Scouting
             this.sendButton = new System.Windows.Forms.Button();
             this.sendArm = new System.Windows.Forms.CheckBox();
             this.nextRobotDataBox = new System.Windows.Forms.GroupBox();
-            this.aggregateButton = new System.Windows.Forms.Button();
-            this.aggregationResult = new System.Windows.Forms.Label();
-            this.nextMatchBox = new System.Windows.Forms.TextBox();
-            this.nextMatchLabel = new System.Windows.Forms.Label();
-            this.currentMatchLabel = new System.Windows.Forms.Label();
             this.currentMatchBox = new System.Windows.Forms.TextBox();
+            this.currentMatchLabel = new System.Windows.Forms.Label();
+            this.nextMatchLabel = new System.Windows.Forms.Label();
+            this.nextMatchBox = new System.Windows.Forms.TextBox();
+            this.serverAddressBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.connectButton = new System.Windows.Forms.Button();
+            this.serverConnectBox = new System.Windows.Forms.GroupBox();
+            this.getIpLabel = new System.Windows.Forms.Label();
+            this.getIpButton = new System.Windows.Forms.Button();
             this.teamTable.SuspendLayout();
             this.nextRobotDataBox.SuspendLayout();
+            this.serverConnectBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(589, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(475, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 44);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Get Data for This Team:";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // teamTable
             // 
@@ -93,7 +80,7 @@ namespace _1294_Scouting
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.teamTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.teamTable.Controls.Add(this.r1Label, 0, 0);
             this.teamTable.Controls.Add(this.s1Team, 1, 0);
             this.teamTable.Controls.Add(this.s2Input, 2, 1);
@@ -365,6 +352,7 @@ namespace _1294_Scouting
             this.nextRobotDataBox.Controls.Add(this.sendArm);
             this.nextRobotDataBox.Controls.Add(this.sendButton);
             this.nextRobotDataBox.Controls.Add(this.teamTable);
+            this.nextRobotDataBox.Enabled = false;
             this.nextRobotDataBox.Location = new System.Drawing.Point(12, 12);
             this.nextRobotDataBox.Name = "nextRobotDataBox";
             this.nextRobotDataBox.Size = new System.Drawing.Size(438, 425);
@@ -372,40 +360,13 @@ namespace _1294_Scouting
             this.nextRobotDataBox.TabStop = false;
             this.nextRobotDataBox.Text = "Next Match";
             // 
-            // aggregateButton
+            // currentMatchBox
             // 
-            this.aggregateButton.Location = new System.Drawing.Point(547, 131);
-            this.aggregateButton.Name = "aggregateButton";
-            this.aggregateButton.Size = new System.Drawing.Size(116, 23);
-            this.aggregateButton.TabIndex = 7;
-            this.aggregateButton.Text = "AGGREGATE";
-            this.aggregateButton.UseVisualStyleBackColor = true;
-            this.aggregateButton.Click += new System.EventHandler(this.AggregateButton_Click);
-            // 
-            // aggregationResult
-            // 
-            this.aggregationResult.AutoSize = true;
-            this.aggregationResult.Location = new System.Drawing.Point(547, 161);
-            this.aggregationResult.Name = "aggregationResult";
-            this.aggregationResult.Size = new System.Drawing.Size(35, 13);
-            this.aggregationResult.TabIndex = 8;
-            this.aggregationResult.Text = "label1";
-            // 
-            // nextMatchBox
-            // 
-            this.nextMatchBox.Location = new System.Drawing.Point(90, 17);
-            this.nextMatchBox.Name = "nextMatchBox";
-            this.nextMatchBox.Size = new System.Drawing.Size(94, 20);
-            this.nextMatchBox.TabIndex = 6;
-            // 
-            // nextMatchLabel
-            // 
-            this.nextMatchLabel.AutoSize = true;
-            this.nextMatchLabel.Location = new System.Drawing.Point(9, 20);
-            this.nextMatchLabel.Name = "nextMatchLabel";
-            this.nextMatchLabel.Size = new System.Drawing.Size(75, 13);
-            this.nextMatchLabel.TabIndex = 7;
-            this.nextMatchLabel.Text = "Next Match #:";
+            this.currentMatchBox.Location = new System.Drawing.Point(325, 17);
+            this.currentMatchBox.Name = "currentMatchBox";
+            this.currentMatchBox.ReadOnly = true;
+            this.currentMatchBox.Size = new System.Drawing.Size(100, 20);
+            this.currentMatchBox.TabIndex = 9;
             // 
             // currentMatchLabel
             // 
@@ -416,38 +377,101 @@ namespace _1294_Scouting
             this.currentMatchLabel.TabIndex = 8;
             this.currentMatchLabel.Text = "Current Match #:";
             // 
-            // currentMatchBox
+            // nextMatchLabel
             // 
-            this.currentMatchBox.Location = new System.Drawing.Point(325, 17);
-            this.currentMatchBox.Name = "currentMatchBox";
-            this.currentMatchBox.ReadOnly = true;
-            this.currentMatchBox.Size = new System.Drawing.Size(100, 20);
-            this.currentMatchBox.TabIndex = 9;
+            this.nextMatchLabel.AutoSize = true;
+            this.nextMatchLabel.Location = new System.Drawing.Point(9, 20);
+            this.nextMatchLabel.Name = "nextMatchLabel";
+            this.nextMatchLabel.Size = new System.Drawing.Size(75, 13);
+            this.nextMatchLabel.TabIndex = 7;
+            this.nextMatchLabel.Text = "Next Match #:";
+            // 
+            // nextMatchBox
+            // 
+            this.nextMatchBox.Location = new System.Drawing.Point(90, 17);
+            this.nextMatchBox.Name = "nextMatchBox";
+            this.nextMatchBox.Size = new System.Drawing.Size(94, 20);
+            this.nextMatchBox.TabIndex = 6;
+            // 
+            // serverAddressBox
+            // 
+            this.serverAddressBox.Location = new System.Drawing.Point(6, 32);
+            this.serverAddressBox.Name = "serverAddressBox";
+            this.serverAddressBox.Size = new System.Drawing.Size(100, 20);
+            this.serverAddressBox.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Connection String";
+            // 
+            // connectButton
+            // 
+            this.connectButton.Location = new System.Drawing.Point(6, 58);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(75, 23);
+            this.connectButton.TabIndex = 11;
+            this.connectButton.Text = "CONNECT";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
+            // 
+            // serverConnectBox
+            // 
+            this.serverConnectBox.Controls.Add(this.connectButton);
+            this.serverConnectBox.Controls.Add(this.label1);
+            this.serverConnectBox.Controls.Add(this.serverAddressBox);
+            this.serverConnectBox.Location = new System.Drawing.Point(12, 443);
+            this.serverConnectBox.Name = "serverConnectBox";
+            this.serverConnectBox.Size = new System.Drawing.Size(140, 95);
+            this.serverConnectBox.TabIndex = 12;
+            this.serverConnectBox.TabStop = false;
+            this.serverConnectBox.Text = "Connection";
+            // 
+            // getIpLabel
+            // 
+            this.getIpLabel.AutoSize = true;
+            this.getIpLabel.Location = new System.Drawing.Point(167, 475);
+            this.getIpLabel.Name = "getIpLabel";
+            this.getIpLabel.Size = new System.Drawing.Size(0, 13);
+            this.getIpLabel.TabIndex = 13;
+            // 
+            // getIpButton
+            // 
+            this.getIpButton.Location = new System.Drawing.Point(170, 449);
+            this.getIpButton.Name = "getIpButton";
+            this.getIpButton.Size = new System.Drawing.Size(75, 23);
+            this.getIpButton.TabIndex = 14;
+            this.getIpButton.Text = "Get IP Address";
+            this.getIpButton.UseVisualStyleBackColor = true;
+            this.getIpButton.Click += new System.EventHandler(this.getIpButton_Click);
             // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1121, 617);
-            this.Controls.Add(this.aggregationResult);
-            this.Controls.Add(this.aggregateButton);
+            this.ClientSize = new System.Drawing.Size(465, 580);
+            this.Controls.Add(this.getIpButton);
+            this.Controls.Add(this.getIpLabel);
+            this.Controls.Add(this.serverConnectBox);
             this.Controls.Add(this.nextRobotDataBox);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Name = "Server";
             this.Text = "Server";
             this.teamTable.ResumeLayout(false);
             this.teamTable.PerformLayout();
             this.nextRobotDataBox.ResumeLayout(false);
             this.nextRobotDataBox.PerformLayout();
+            this.serverConnectBox.ResumeLayout(false);
+            this.serverConnectBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel teamTable;
         private System.Windows.Forms.Label r1Label;
         private System.Windows.Forms.Label s1Team;
@@ -476,11 +500,15 @@ namespace _1294_Scouting
         private System.Windows.Forms.ProgressBar progressBar4;
         private System.Windows.Forms.ProgressBar progressBar5;
         private System.Windows.Forms.ProgressBar progressBar6;
-        private System.Windows.Forms.Button aggregateButton;
-        private System.Windows.Forms.Label aggregationResult;
         private System.Windows.Forms.TextBox nextMatchBox;
         private System.Windows.Forms.Label nextMatchLabel;
         private System.Windows.Forms.TextBox currentMatchBox;
         private System.Windows.Forms.Label currentMatchLabel;
+        private System.Windows.Forms.TextBox serverAddressBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.GroupBox serverConnectBox;
+        private System.Windows.Forms.Label getIpLabel;
+        private System.Windows.Forms.Button getIpButton;
     }
 }
