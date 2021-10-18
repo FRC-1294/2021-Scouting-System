@@ -9,7 +9,14 @@ Ask Sam
 
 ## How to edit
 Use Visual studio 2019
+
+Clone
+
 Refresh the NuGet packages to download MongoDB
+
 Build clean
+
 Build
+
 Run!
+
